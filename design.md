@@ -4,84 +4,97 @@ Locked design system. Future Hallmark runs read this file first; pages defer
 to it. Amend intentionally — the file is the rule.
 
 ## System
-- Genre · atmospheric
-- Macrostructure · Narrative Workflow
-- Theme · lumen (drop: night foundry)
-- Axes · dark (L 13% / H 265 violet tilt) / classical-serif-lowercase (Instrument Serif 400, upright, all-lowercase prose) / molten brass (H 50) + coral chord (H 18)
+- Genre · atmospheric (loud register)
+- Macrostructure · Narrative Workflow (sticky-rail variant)
+- Theme · custom retune of lumen night-foundry (v4.6: cool charcoal + single acid-green accent; serif display kept)
+- Axes · dark (L 12% / H 250 cool charcoal, no violet) / classical-serif-lowercase (Instrument Serif 400, upright, all-lowercase prose) / acid green (H 145, one accent)
 
 ## Tokens (canonical · `tokens.css` is the source of truth)
 ```css
 :root {
-  --color-paper:      oklch(13%  0.014 265);   /* late-night studio, violet tilt */
-  --color-paper-2:    oklch(17%  0.016 265);   /* elevated card */
-  --color-paper-3:    oklch(22%  0.018 263);   /* deeper hover */
-  --color-ink:        oklch(96%  0.006 262);   /* headlines, near-white */
-  --color-ink-2:      oklch(82%  0.010 262);   /* body */
-  --color-rule:       oklch(30%  0.018 265);   /* hairline border */
-  --color-rule-2:     oklch(42%  0.020 263);   /* stronger hairline */
-  --color-muted:      oklch(60%  0.016 263);   /* captions, meta, labels */
-  --color-accent:     oklch(76% 0.17 50);      /* molten brass */
-  --color-accent-2:   oklch(68% 0.16 18);      /* coral chord — verb landmark only */
-  --color-accent-ink: oklch(13% 0.014 265);    /* ink on accent fill */
-  --color-focus:      oklch(76% 0.17 50);
-  --color-glow:       oklch(80% 0.16 50 / 0.42);  /* brass halo — apparatus + cards only */
-  --rule-blueprint:   oklch(96% 0.006 262 / 0.04); /* hero grid, 48px cells */
-  --color-glass:      oklch(15% 0.015 265 / 0.72); /* nav pill frost */
-  --color-deep:       oklch(9.5% 0.016 265);        /* one deep beat per page */
+  --color-paper:      oklch(12%  0.010 250);   /* cool charcoal void */
+  --color-paper-2:    oklch(16%  0.012 250);   /* elevated surface */
+  --color-paper-3:    oklch(21%  0.014 248);   /* hover surface */
+  --color-ink:        oklch(97%  0.008 250);   /* headlines, near-white */
+  --color-ink-2:      oklch(80%  0.012 250);   /* body */
+  --color-rule:       oklch(28%  0.012 250);   /* hairline border */
+  --color-rule-2:     oklch(40%  0.014 248);   /* stronger hairline */
+  --color-muted:      oklch(62%  0.014 248);   /* captions, meta, labels */
+  --color-bone:       oklch(95.5% 0.008 250);  /* the document, cool light */
+  --color-ink-strong: oklch(16%  0.014 250);   /* ink on bone */
+
+  --color-accent:     oklch(78% 0.17 145);     /* acid green — the ONE accent */
+  --color-accent-2:   oklch(85% 0.15 145);     /* brighter green, verb landmark */
+  --color-accent-ink: oklch(12% 0.012 250);
+  --color-focus:      oklch(78% 0.17 145);
+  --color-glow:       oklch(80% 0.16 145 / 0.5);
+  --color-glow-2:     oklch(80% 0.16 145 / 0.14);
+  --color-emit:       oklch(78% 0.17 145 / 0.08);
+  --color-band:       oklch(46% 0.13 145);     /* full-bleed deep-green field */
+  --color-deep:       oklch(8%  0.010 250);    /* closing void */
+  --color-glass:      oklch(15% 0.012 250 / 0.75);
+  --rule-blueprint:   oklch(97% 0.008 250 / 0.07); /* hero grid, visible 32px */
 
   --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
   --font-body:    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-label:   "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* 4-pt spacing scale, named: --space-3xs … --space-4xl. See tokens.css.   */
-  /* Type scale: --text-xs … --text-display (clamp 3rem → 5.6rem).           */
+  /* Type scale: hero masthead 8.5rem max, counter 11rem max, punch 8rem.     */
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-soft:   cubic-bezier(0.33, 1, 0.68, 1);
-  --dur-short: 220ms;  --dur-long: 420ms;  --dur-pulse: 4s;
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 220ms;  --dur-long: 420ms;
 
-  --radius-card: 10px;  --radius-pill: 999px;  --radius-input: 8px;
+  --radius-card: 14px;  --radius-pill: 999px;  --radius-input: 8px;
 }
 ```
 
-## Typography law (non-negotiable — the theme's two-register split)
+## Typography law (non-negotiable — the two-register split)
 - All prose is **lowercase** — headlines, lede, body, buttons, nav, brand,
   footer copy. Screen readers read the HTML; CSS renders the case.
-- **UPPERCASE mono** is the only uppercase surface — eyebrows
-  (`00 · A CONTENT INSTRUMENT`), apparatus callouts, meter labels, tags.
+- **UPPERCASE mono** is the only uppercase surface — status chips, stage
+  labels, meta, plan names.
 - No `font-style: italic` anywhere. Emphasis = weight, accent colour, or a
-  1px drawn underline. The one accent-coloured word per headline is the
-  **verb/noun landmark** (coral chord + underline), never decorative.
+  1px drawn underline. One accent-coloured word per headline max (the verb
+  landmark, `--color-accent-2`).
 - Three families max: Instrument Serif (display) · Geist (body) ·
   JetBrains Mono (labels). No fourth.
 
 ## CTA voice
-- Primary · solid molten-brass fill · pill radius · `--space-sm --space-lg` padding · verb-first label ("start free trial")
-- Secondary · hairline ghost (`--color-rule-2` border, transparent fill) · same pill radius
-- Buttons hover-warm (brass → near-white), press `translateY(1px)`, instant 2px brass focus ring +3px offset
+- Primary · solid acid-green fill (`--color-accent`) · pill radius · verb-first label ("start free trial") — one label per intent, used everywhere
+- Secondary · hairline ghost (`--color-rule-2` border) · same pill radius
+- Buttons: green → brighter green on hover with glow, press `translateY(1px)`, instant 2px green focus ring +3px offset
 
 ## Motion stance
-- Composed: one-shot reveals (fade + 10px rise, 600ms, 60ms stagger) · one
-  filament pulse (4s, 3% intensity) · verb-underline draw-in (320ms, once).
-  Nothing else moves. No marquee, no parallax, no loops.
-- Reduced-motion fallback · all animation collapses to static final state; reveals render fully visible.
+- **Heavy smooth scroll** — lerp inertia on wheel/keys/anchors (0.09 factor),
+  no dependencies, disabled under reduced-motion.
+- **The live run** — hero counter ticks 0→2,340 while the document types
+  itself; stamp lands; rail electrodes light in sequence. Runs once per view.
+- **Fly rail** — number/verb swaps with a 260ms fade-slide ONLY on section
+  change (never per scroll frame).
+- **FAQ** — open/close animates `grid-template-rows` 0fr→1fr.
+- **Sparkles** — 34 floating green particles in the hero, transform+opacity,
+  reduced-motion hides them.
+- Section reveals are one-shot (hero grid, receipt, closing). Reduced-motion:
+  everything static, fully visible.
 
 ## Signatures (what makes it nib, not a template)
-- **Apparatus over orb** — one hand-built CSS instrument per page
-  (filament chamber); leader-line callouts carry REAL brief values only.
-- **Blueprint grid** — 48px cells at 4% opacity + one brass inner-emit
-  wash on the hero; dark beat comes from the apparatus, never from blobs.
-- **Meter strip** — full-bleed gaussian-envelope tick band under the hero;
-  a printed readout, static.
-- **Narrative Workflow stages** — `1.0 → 5.0` numbered rules, text column +
-  hairline card lit from within (radial at ≤6% opacity rest / 12% hover).
-- **The live run** — the apparatus demonstrates the product once per view:
-  readout cycles connect → study → draft (words 0→2,340) → score (0→92) →
-  filed; electrodes + callouts light in sequence; reduced-motion = static.
+- **The typing document** — a light bone paper in the hero that types the
+  article live, with a giant green word counter and a coral-free rubber stamp
+  ("draft ready · filed to wordpress") that lands in the corner.
+- **Visible blueprint grid** — 32px cells at 7% opacity under the hero.
+- **Narrative Workflow stages** — sticky left rail (`1.0 → 5.0` big serif
+  numeral + name + dots) syncs to tall panes; text + inner-lit hairline cards.
+- **Light document receipt** — full-bleed bone section with counting stats
+  (2,340 / 92 / 4 / 3), sample-run labelled.
+- **Deep-green punch band** — full-bleed `--color-band` field with massive
+  serif statement.
 - **Statement footer** — one serif sentence closes the page.
 - Bans: no purple-cyan gradients, no gradient text, no aurora blobs, no
   glassmorphism, no re-drawn browser chrome, no invented metrics, no
-  emoji icons, no italic headers, no centred-everything heroes.
+  emoji icons, no italic headers, no centred-everything heroes, no warm
+  brass/coral/violet hues (single green hue family only).
 
 ## Exports
 `tokens.css` (in this project) is the source of truth. For Tailwind v4
