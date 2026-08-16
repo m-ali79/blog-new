@@ -1,0 +1,8 @@
+{
+  "name": "blogi-new",
+  "private": true,
+  "description": "nib landing page \u2014 static HTML/CSS/JS, shader assets",
+  "scripts": {
+    "verify": "node --check assets/hero-flow.js && node --check assets/punch-shader.js"
+  }
+}
