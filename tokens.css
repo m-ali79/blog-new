@@ -1,106 +1,94 @@
 /* ============================================================
-   nib · design tokens · Hallmark lumen — Night Foundry drop
-   every colour + font in styles.css references these names.
+   nib v4 · electric night — tokens
+   deep violet void · hot amber machine · bone-white document ·
+   signal-coral scream. full tonal range, no beige.
    ============================================================ */
 
 :root {
   color-scheme: dark;
 
-  /* — canvas · late-night studio, violet tilt — */
-  --color-paper:      oklch(13%  0.014 265);
-  --color-paper-2:    oklch(17%  0.016 265);   /* elevated card */
-  --color-paper-3:    oklch(22%  0.018 263);   /* deeper hover */
-  --color-rule:       oklch(30%  0.018 265);   /* hairline border */
-  --color-rule-2:     oklch(42%  0.020 263);   /* stronger hairline */
-  --color-muted:      oklch(60%  0.016 263);   /* captions, meta */
-  --color-neutral:    oklch(72%  0.014 263);
-  --color-ink-2:      oklch(82%  0.010 262);   /* body */
-  --color-ink:        oklch(96%  0.006 262);   /* headlines */
+  /* — void · the machine's dark — */
+  --color-paper:      oklch(12%  0.022 275);   /* deep violet-black */
+  --color-paper-2:    oklch(16%  0.024 275);   /* elevated surface */
+  --color-paper-3:    oklch(21%  0.026 273);   /* hover surface */
+  --color-rule:       oklch(28%  0.020 275);
+  --color-rule-2:     oklch(40%  0.022 273);
+  --color-muted:      oklch(62%  0.020 270);
+  --color-ink-2:      oklch(80%  0.012 270);
+  --color-ink:        oklch(97%  0.008 270);
 
-  /* — signal · molten brass + coral chord — */
-  --color-accent:     oklch(76% 0.17 50);
-  --color-accent-2:   oklch(68% 0.16 18);
-  --color-accent-ink: oklch(13% 0.014 265);    /* ink on accent fill */
-  --color-focus:      oklch(76% 0.17 50);
-  --color-glow:       oklch(80% 0.16 50 / 0.42);
-  --color-glow-2:     oklch(80% 0.16 50 / 0.12);
-  --color-paper-emit: oklch(76% 0.17 50 / 0.04);
-  --rule-blueprint:   oklch(96% 0.006 262 / 0.04);
+  /* — the document · light bone — */
+  --color-bone:       oklch(95.5% 0.012 80);
+  --color-bone-2:     oklch(90%   0.014 78);
+  --color-ink-strong: oklch(18%   0.022 275);  /* ink on bone */
 
-  /* — surfaces — */
-  --color-glass:       oklch(15% 0.015 265 / 0.72);  /* nav pill frost */
-  --color-deep:        oklch(9.5% 0.016 265);         /* one deep beat per page */
+  /* — signal · hot amber machine + coral scream — */
+  --color-accent:     oklch(75% 0.19 62);      /* hot amber */
+  --color-accent-2:   oklch(66% 0.22 28);      /* signal coral */
+  --color-accent-ink: oklch(13% 0.02 275);
+  --color-focus:      oklch(75% 0.19 62);
+  --color-glow:       oklch(80% 0.18 62 / 0.5);
+  --color-glow-2:     oklch(80% 0.18 62 / 0.14);
+  --color-emit:       oklch(75% 0.19 62 / 0.08);
 
-  /* — apparatus · filament chamber — */
-  --chamber-bg:       oklch(17% 0.016 265 / 0.85);
-  --filament-hot:     oklch(96% 0.05 50);
-  --filament-core:    oklch(80% 0.17 50);
-  --halo-wide:        oklch(80% 0.16 50 / 0.22);
+  /* — the band · full-bleed coral field — */
+  --color-band:       oklch(52% 0.23 30);
+  --color-band-2:     oklch(62% 0.24 18);
 
-  /* — type · three families, ceiling — */
+  --color-deep:       oklch(8%  0.022 278);    /* closing void */
+  --color-glass:      oklch(15% 0.02 275 / 0.75);
+
+  /* — type — */
   --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
   --font-body:    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-label:   "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-mono:    "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --text-display:   clamp(3rem, 6vw + 0.9rem, 6.25rem);
-  --text-display-s: clamp(2rem, 3.2vw + 0.9rem, 3.4rem);
-  --text-2xl: 2.25rem;
-  --text-xl:  1.75rem;
-  --text-md:  1.125rem;
-  --text-sm:  0.875rem;
-  --text-xs:  0.75rem;
+  --text-display:    clamp(3.25rem, 7vw + 1rem, 8.5rem);   /* hero masthead */
+  --text-display-s:  clamp(2.25rem, 4vw + 1rem, 4.5rem);   /* section heads */
+  --text-hero-num:   clamp(4.5rem, 9vw + 1rem, 11rem);     /* the counter */
+  --text-punch:      clamp(3rem, 7.5vw + 1rem, 8rem);      /* the scream */
+  --text-rail-num:   clamp(4rem, 7vw + 1rem, 6.5rem);      /* fly rail */
+  --text-receipt-num: clamp(3.5rem, 6vw + 1rem, 6rem);     /* receipt counts */
 
-  --tracking-display: -0.032em;
-  --tracking-tight:   -0.014em;
+  --tracking-display: -0.035em;
+  --tracking-tight:   -0.015em;
   --tracking-label:   0.10em;
-  --tracking-micro:   0.16em;
 
-  --lh-tight:   1.04;
-  --lh-snug:    1.18;
-  --lh-normal:  1.55;
-  --lh-relaxed: 1.7;
-  --measure:    60ch;
+  --lh-tight: 1.02;
+  --lh-snug:  1.15;
+  --lh-normal: 1.55;
 
-  /* — space · 4pt scale — */
-  --space-3xs: 0.1875rem;   /*  3px */
-  --space-2xs: 0.25rem;     /*  4px */
-  --space-xs:  0.5rem;      /*  8px */
-  --space-sm:  0.75rem;     /* 12px */
-  --space-md:  1rem;        /* 16px */
-  --space-lg:  1.5rem;      /* 24px */
-  --space-xl:  2.5rem;      /* 40px */
-  --space-2xl: 4rem;        /* 64px */
-  --space-3xl: 6rem;        /* 96px */
-  --space-4xl: 9rem;        /* 144px */
+  /* — space · 4pt — */
+  --space-3xs: 0.1875rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
 
   /* — motion — */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-soft:   cubic-bezier(0.33, 1, 0.68, 1);
   --dur-micro: 120ms;
   --dur-short: 220ms;
   --dur-long:  420ms;
-  --dur-pulse: 4s;
 
-  /* — shape + depth — */
-  --radius-card: 10px;
+  --radius-card: 14px;
   --radius-pill: 999px;
   --radius-input: 8px;
-  --shadow-card: 0 24px 60px -28px oklch(0% 0 0 / 0.55),
-                 0 1px 2px oklch(0% 0 0 / 0.4);
+  --shadow-card: 0 30px 80px -30px oklch(0% 0 0 / 0.7), 0 1px 2px oklch(0% 0 0 / 0.4);
 
-  /* — z scale — */
   --z-base: 1;
   --z-raised: 10;
   --z-sticky-nav: 300;
   --z-modal: 400;
 
-  /* — layout — */
   --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
-  --page-max: 72rem;
-  --section-gap: 6.5rem;
-
+  --page-max: 74rem;
   --banner-height: 4.5rem;
 }
