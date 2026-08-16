@@ -127,12 +127,13 @@ a { color: inherit; }
    ============================================================ */
 .hero {
   position: relative;
-  padding: calc(var(--banner-height) + var(--space-3xl)) var(--page-gutter) var(--space-3xl);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--banner-height) + var(--space-xl)) var(--page-gutter) var(--space-xl);
   background:
     radial-gradient(55% 45% at 78% 18%, var(--color-emit) 0%, transparent 65%),
     radial-gradient(40% 35% at 12% 88%, oklch(78% 0.17 145 / 0.05) 0%, transparent 60%),
-    linear-gradient(var(--rule-blueprint) 1px, transparent 1px) 0 0 / 32px 32px,
-    linear-gradient(90deg, var(--rule-blueprint) 1px, transparent 1px) 0 0 / 32px 32px,
     var(--color-paper);
   overflow: clip;
 }
@@ -148,6 +149,7 @@ a { color: inherit; }
 .hero__grid {
   position: relative;
   z-index: 1;
+  width: 100%;
   max-width: var(--page-max);
   margin-inline: auto;
   display: grid;
@@ -167,12 +169,13 @@ a { color: inherit; }
 .hero__title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: var(--text-display);
+  font-size: clamp(2.75rem, 4.5vw + 0.75rem, 5rem);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-display);
   color: var(--color-ink);
   margin: 0 0 var(--space-lg);
   overflow-wrap: anywhere; min-width: 0;
+  max-width: 16ch;
 }
 .hero__title em {
   font-style: normal; color: var(--color-accent-2);
@@ -527,7 +530,6 @@ a { color: inherit; }
    SCREAM · full-bleed coral band
    ============================================================ */
 .scream {
-  position: relative;
   background:
     radial-gradient(80% 90% at 20% 10%, var(--color-band-2) 0%, transparent 55%),
     radial-gradient(70% 80% at 85% 90%, oklch(38% 0.13 145) 0%, transparent 60%),
@@ -536,21 +538,6 @@ a { color: inherit; }
   padding: var(--space-2xl) var(--page-gutter);
   text-align: center;
   overflow: clip;
-}
-/* shader canvas · full-bleed behind the text */
-#punch-canvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-}
-/* dark scrim behind the words — shader glow must not wash the type */
-.scream__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 60rem;
-  margin-inline: auto;
-  padding: var(--space-lg);
-  background: radial-gradient(70% 90% at 50% 50%, oklch(8% 0.01 250 / 0.62) 0%, transparent 72%);
 }
 .scream__line {
   margin: 0 0 var(--space-lg);
