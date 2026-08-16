@@ -26,6 +26,8 @@ to it. Amend intentionally — the file is the rule.
   --color-focus:      oklch(76% 0.17 50);
   --color-glow:       oklch(80% 0.16 50 / 0.42);  /* brass halo — apparatus + cards only */
   --rule-blueprint:   oklch(96% 0.006 262 / 0.04); /* hero grid, 48px cells */
+  --color-glass:      oklch(15% 0.015 265 / 0.72); /* nav pill frost */
+  --color-deep:       oklch(9.5% 0.016 265);        /* one deep beat per page */
 
   --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
   --font-body:    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -73,6 +75,9 @@ to it. Amend intentionally — the file is the rule.
   a printed readout, static.
 - **Narrative Workflow stages** — `1.0 → 5.0` numbered rules, text column +
   hairline card lit from within (radial at ≤6% opacity rest / 12% hover).
+- **The live run** — the apparatus demonstrates the product once per view:
+  readout cycles connect → study → draft (words 0→2,340) → score (0→92) →
+  filed; electrodes + callouts light in sequence; reduced-motion = static.
 - **Statement footer** — one serif sentence closes the page.
 - Bans: no purple-cyan gradients, no gradient text, no aurora blobs, no
   glassmorphism, no re-drawn browser chrome, no invented metrics, no

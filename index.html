@@ -3,9 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>nib — a research-to-published post, run as one instrument.</title>
   <meta name="description" content="nib connects to your site, studies what ranks for your topic, writes the long-form draft in your voice, scores it against seo practice, and files it as a wordpress draft — you keep the approve button." />
   <meta name="theme-color" content="#0b0a12" />
+
+  <title>nib — a research-to-published post, run as one instrument.</title>
+  <meta property="og:title" content="nib — research to published, one instrument." />
+  <meta property="og:description" content="connect your site, drop a keyword, get a 2,000+ word seo-scored draft filed in wordpress. you keep the approve button." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0c14'/%3E%3Crect x='7.25' y='3' width='1.5' height='10' rx='.75' fill='%23e8b04b'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +29,7 @@
       <span class="nav__mark" aria-hidden="true"></span>
       nib
     </a>
+    <span class="nav__status" aria-hidden="true"><i></i><span>idle</span></span>
     <nav class="nav__links" aria-label="primary">
       <a href="#stages">how it works</a>
       <a href="#pricing">pricing</a>
@@ -65,7 +72,6 @@
         <figure class="apparatus reveal" style="--i:2" aria-label="The nib pipeline rendered as a filament chamber — research, writing, seo scoring and publishing stages marked along the filament.">
           <div class="apparatus__rig">
             <div class="chamber">
-              <span class="chamber__wall" aria-hidden="true"></span>
               <span class="chamber__electrode" style="--y: 16%" aria-hidden="true"></span>
               <span class="chamber__electrode" style="--y: 34%" aria-hidden="true"></span>
               <span class="chamber__electrode" style="--y: 52%" aria-hidden="true"></span>
@@ -92,6 +98,7 @@
               </li>
             </ul>
           </div>
+          <p class="apparatus__readout" id="run-readout" aria-hidden="true">standing by</p>
           <p class="apparatus__caption" aria-hidden="true">nib · rx-05 · 5 stages</p>
         </figure>
       </div>
@@ -151,7 +158,7 @@
       </article>
 
       <!-- 2.0 research -->
-      <article class="stage reveal">
+      <article class="stage">
         <div class="stage__info">
           <p class="stage__num">2.0 · research</p>
           <h3 class="stage__name">it reads what ranks before it writes.</h3>
@@ -159,8 +166,8 @@
             for your keyword, nib pulls the pages currently holding the top
             spots, takes apart their structure — headings covered, questions
             answered, depth per section — and marks the questions they leave
-            unanswered. that gap list becomes your outline. you're not
-            rewriting the leaderboards; you're covering what they missed.
+            unanswered. that gap list becomes your outline. you’re not
+            rewriting the leaderboards; you’re covering what they missed.
           </p>
           <ul class="stage__tags">
             <li>top-10 serp scan</li>
@@ -197,7 +204,7 @@
       </article>
 
       <!-- 3.0 write -->
-      <article class="stage reveal">
+      <article class="stage">
         <div class="stage__info">
           <p class="stage__num">3.0 · write</p>
           <h3 class="stage__name">the draft arrives long, structured, and in your voice.</h3>
@@ -230,7 +237,7 @@
       </article>
 
       <!-- 4.0 score -->
-      <article class="stage reveal">
+      <article class="stage">
         <div class="stage__info">
           <p class="stage__num">4.0 · score</p>
           <h3 class="stage__name">a 0–100 score, and the fixes behind it.</h3>
@@ -267,7 +274,7 @@
       </article>
 
       <!-- 5.0 publish -->
-      <article class="stage reveal">
+      <article class="stage">
         <div class="stage__info">
           <p class="stage__num">5.0 · publish</p>
           <h3 class="stage__name">it lands in wordpress as a draft. you press the button.</h3>
@@ -312,7 +319,7 @@
       </header>
 
       <div class="plans">
-        <article class="plan reveal">
+        <article class="plan">
           <p class="plan__name">solo</p>
           <p class="plan__price"><span class="plan__num">$29</span><span class="mo">/mo</span></p>
           <p class="plan__unit">4 posts · 1 site</p>
@@ -324,7 +331,7 @@
           <a class="btn btn--ghost btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan plan--feature reveal">
+        <article class="plan plan--feature">
           <span class="plan__badge">most teams</span>
           <p class="plan__name">studio</p>
           <p class="plan__price"><span class="plan__num">$79</span><span class="mo">/mo</span></p>
@@ -338,7 +345,7 @@
           <a class="btn btn--accent btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan reveal">
+        <article class="plan">
           <p class="plan__name">agency</p>
           <p class="plan__price"><span class="plan__num">$249</span><span class="mo">/mo</span></p>
           <p class="plan__unit">60 posts · unlimited sites</p>
@@ -367,7 +374,7 @@
       <div class="faq">
         <details class="faq__item" open>
           <summary>will google punish ai-written content?</summary>
-          <p>google's stated position punishes content made for rankings instead of people — not the tool that typed it. nib's drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p>
+          <p>google’s stated position punishes content made for rankings instead of people — not the tool that typed it. nib's drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p>
         </details>
         <details class="faq__item">
           <summary>how does it match my brand voice?</summary>
@@ -375,22 +382,38 @@
         </details>
         <details class="faq__item">
           <summary>can it publish without me?</summary>
-          <p>no. nib files everything as a wordpress draft and stops. the publish button is yours — that's the whole point of the design.</p>
+          <p>no. nib files everything as a wordpress draft and stops. the publish button is yours — that’s the whole point of the design.</p>
         </details>
         <details class="faq__item">
-          <summary>what if the draft isn't good?</summary>
+          <summary>what if the draft isn’t good?</summary>
           <p>each section can be regenerated with a nudge — "shorter", "more examples", "less jargon". the 0–100 score tells you exactly what's weak before you spend time reading.</p>
         </details>
         <details class="faq__item">
           <summary>does it work outside wordpress?</summary>
-          <p>wordpress first — it's where most business blogs live. webflow and shopify are on the roadmap. if you're on another stack, the drafts export as clean markdown.</p>
+          <p>wordpress first — it's where most business blogs live. webflow and shopify are on the roadmap. if you’re on another stack, the drafts export as clean markdown.</p>
         </details>
+      </div>
+    </section>
+
+    <!-- ─── trust band · no invented stats, real product facts ─── -->
+    <section class="trustband" aria-label="what nib will and will not do">
+      <div class="trustband__item">
+        <span class="k">access</span>
+        <span class="v">author-level wordpress access. it can write drafts, never publish.</span>
+      </div>
+      <div class="trustband__item">
+        <span class="k">control</span>
+        <span class="v">every post waits in drafts until you press publish.</span>
+      </div>
+      <div class="trustband__item">
+        <span class="k">exit</span>
+        <span class="v">export every draft as clean markdown and leave anytime.</span>
       </div>
     </section>
 
     <!-- ─── closing cta band ─── -->
     <div class="closing-wrap">
-      <section class="closing reveal" aria-labelledby="closing-title">
+      <section class="closing" aria-labelledby="closing-title">
         <h2 class="closing__title" id="closing-title">
           your next 50 posts are a keyword list away.
         </h2>
@@ -434,6 +457,73 @@
   </footer>
 
   <script>
+    // the live run — the apparatus demonstrates the product, once per view
+    (function () {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var readout = document.getElementById("run-readout");
+      var callouts = [].slice.call(document.querySelectorAll(".callout"));
+      var electrodes = [].slice.call(document.querySelectorAll(".chamber__electrode"));
+      if (!readout || !callouts.length) return;
+      // callout order in DOM: connect, study, draft, score, file
+      var steps = [
+        { txt: "connecting · wordpress", c: 0, e: 0 },
+        { txt: "reading top 10 results", c: 1, e: 1 },
+        { txt: "writing · <span id=\"wordcount\">0</span> words", c: 2, e: 2 },
+        { txt: "seo check · <span id=\"scoretick\">00</span>/100", c: 3, e: 3 },
+        { txt: "filed as wp draft", c: 4, e: 4 }
+      ];
+      var li = null;
+      function clear() {
+        callouts.forEach(function (c) { c.classList.remove("is-active"); });
+        electrodes.forEach(function (e) { e.classList.remove("is-active"); });
+      }
+      function runStep(i) {
+        if (i >= steps.length) {
+          clear();
+          readout.innerHTML = "draft ready \u00b7 awaiting you";
+          li = null;
+          return;
+        }
+        var st = steps[i];
+        clear();
+        readout.innerHTML = st.txt;
+        callouts[st.c].classList.add("is-active");
+        electrodes[st.e].classList.add("is-active");
+        var dur = 1500;
+        if (i === 2) { // word counter 0 -> 2340
+          var wc = document.getElementById("wordcount");
+          var t0 = performance.now(), D = 1600;
+          (function tick(t) {
+            var p = Math.min(1, (t - t0) / D);
+            wc.textContent = Math.round(2340 * p).toLocaleString("en-US");
+            if (p < 1) requestAnimationFrame(tick); 
+          })(t0);
+          dur = 1800;
+        }
+        if (i === 3) { // score 0 -> 92
+          var sc = document.getElementById("scoretick");
+          var s0 = performance.now(), S = 1300;
+          (function tock(t) {
+            var p = Math.min(1, (t - s0) / S);
+            sc.textContent = String(Math.round(92 * p)).padStart(2, "0");
+            if (p < 1) requestAnimationFrame(tock);
+          })(s0);
+          dur = 1500;
+        }
+        li = setTimeout(function () { runStep(i + 1); }, dur);
+      }
+      function boot() { clear(); runStep(0); }
+      if (reduced) { readout.textContent = "5 stages \u00b7 one run \u00b7 wp draft out"; return; }
+      // start when the hero is actually seen; re-run when re-entering view
+      var io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) {
+          if (en.isIntersecting && !li) { boot(); }
+          else if (!en.isIntersecting && li) { clearTimeout(li); li = null; clear(); readout.textContent = "standing by"; }
+        });
+      }, { threshold: 0.3 });
+      io.observe(document.querySelector(".apparatus"));
+    })();
+
     // one-shot reveal · IntersectionObserver, never scroll listeners
     (function () {
       var io = new IntersectionObserver(function (entries) {

@@ -27,6 +27,10 @@
   --color-paper-emit: oklch(76% 0.17 50 / 0.04);
   --rule-blueprint:   oklch(96% 0.006 262 / 0.04);
 
+  /* — surfaces — */
+  --color-glass:       oklch(15% 0.015 265 / 0.72);  /* nav pill frost */
+  --color-deep:        oklch(9.5% 0.016 265);         /* one deep beat per page */
+
   /* — apparatus · filament chamber — */
   --chamber-bg:       oklch(17% 0.016 265 / 0.85);
   --filament-hot:     oklch(96% 0.05 50);
@@ -39,7 +43,7 @@
   --font-label:   "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --font-mono:    "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --text-display:   clamp(3rem, 5.6vw + 1rem, 5.6rem);
+  --text-display:   clamp(3rem, 6vw + 0.9rem, 6.25rem);
   --text-display-s: clamp(2rem, 3.2vw + 0.9rem, 3.4rem);
   --text-2xl: 2.25rem;
   --text-xl:  1.75rem;

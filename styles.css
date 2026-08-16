@@ -64,7 +64,7 @@ a { color: inherit; }
   width: min(100% - 2 * var(--page-gutter), 56rem);
   display: flex; align-items: center; gap: var(--space-xl);
   padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-lg);
-  background: oklch(15% 0.015 265 / 0.72);
+  background: var(--color-glass);
   border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
   backdrop-filter: blur(14px) saturate(1.2);
@@ -176,7 +176,7 @@ a { color: inherit; }
   max-width: var(--page-max);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   gap: var(--space-3xl);
   align-items: center;
 }
@@ -198,9 +198,10 @@ a { color: inherit; }
   font-weight: 400;
   font-size: var(--text-display);
   line-height: var(--lh-tight);
-  letter-spacing: var(--tracking-display);
+  letter-spacing: -0.038em;
   color: var(--color-ink);
-  max-width: 14ch;
+  max-width: 16ch;
+  text-wrap: balance;
   margin: 0 0 var(--space-lg);
   overflow-wrap: anywhere;
   min-width: 0;
@@ -307,12 +308,12 @@ a { color: inherit; }
 .callout {
   position: absolute;
   top: var(--y); white-space: nowrap;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   color: var(--color-muted);
   display: flex; align-items: center; gap: var(--space-2xs);
 }
 .callout::before {
-  content: ""; width: 2.75rem; height: 1px;
+  content: ""; width: 2rem; height: 1px;
   background: var(--color-rule-2); flex: none;
 }
 /* label sits LEFT of chamber — line on its right edge, pointing at the chamber */
@@ -321,7 +322,27 @@ a { color: inherit; }
 .callout--r { left: calc(100% + 1rem); flex-direction: row; }
 .callout strong {
   font-weight: 500; color: var(--color-ink-2);
-  font-family: var(--font-label); font-size: 0.625rem;
+  font-family: var(--font-label); font-size: 0.6875rem;
+}
+
+/* — live run states · the apparatus works — */
+.callout { transition: color var(--dur-long) var(--ease-out); }
+.callout::before { transition: background var(--dur-long) var(--ease-out), box-shadow var(--dur-long) var(--ease-out); }
+.callout.is-active { color: var(--color-accent); }
+.callout.is-active strong { color: var(--color-accent); }
+.callout.is-active::before { background: var(--color-accent); box-shadow: 0 0 8px 1px var(--color-glow-2); }
+.chamber__electrode { transition: background var(--dur-long) var(--ease-out), box-shadow var(--dur-long) var(--ease-out); }
+.chamber__electrode.is-active { background: var(--color-accent); box-shadow: 0 0 10px 1px var(--color-glow-2); }
+
+.apparatus__readout {
+  margin: var(--space-2xs) 0 0;
+  text-align: center;
+  font-family: var(--font-label);
+  font-size: 0.6875rem; letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+  min-height: 1em;
 }
 
 /* caption plate · below the chamber, out of the glow */
@@ -375,6 +396,7 @@ a { color: inherit; }
   font-size: var(--text-display-s);
   line-height: 1.08;
   letter-spacing: var(--tracking-display);
+  text-wrap: balance;
   color: var(--color-ink);
   margin: 0;
   overflow-wrap: anywhere; min-width: 0;
@@ -389,6 +411,9 @@ a { color: inherit; }
   border-top: 1px solid var(--color-rule);
 }
 .stage:first-of-type { border-top: 0; padding-top: 0; }
+/* even stages mirror — card left, text right. rhythm is not a template */
+.stage:nth-of-type(even) { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+.stage:nth-of-type(even) .stage__info { order: 2; }
 
 /* — numbered rule marker on the divider — */
 .stage__num {
@@ -527,8 +552,9 @@ a { color: inherit; }
 .closing {
   margin: 0 var(--page-gutter);
   background:
-    radial-gradient(90% 120% at 50% 0%, var(--color-glow-2) 0%, transparent 62%),
-    var(--color-paper-2);
+    radial-gradient(80% 110% at 50% 0%, var(--color-glow) 0%, transparent 58%),
+    radial-gradient(120% 140% at 50% 100%, var(--color-glow-2) 0%, transparent 60%),
+    var(--color-deep);
   border: 1px solid var(--color-rule);
   border-radius: var(--radius-card);
   padding: var(--space-3xl) var(--space-2xl);
@@ -544,6 +570,7 @@ a { color: inherit; }
   font-size: var(--text-display-s);
   line-height: 1.1;
   letter-spacing: var(--tracking-display);
+  text-wrap: balance;
   color: var(--color-ink);
   margin: 0 0 var(--space-lg);
   max-width: 20ch;
@@ -713,6 +740,42 @@ a { color: inherit; }
   color: var(--color-ink-2);
 }
 
+.trustband {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--page-gutter);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-xl);
+}
+.trustband__item { display: flex; flex-direction: column; gap: var(--space-2xs); min-width: 0; }
+.trustband__item .k {
+  font-family: var(--font-label); font-size: 0.625rem;
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--color-accent);
+}
+.trustband__item .v { font-size: var(--text-sm); color: var(--color-ink-2); }
+
+/* nav led */
+.nav__status {
+  display: inline-flex; align-items: center; gap: var(--space-2xs);
+  font-family: var(--font-label); font-size: 0.625rem;
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--color-muted); white-space: nowrap;
+}
+.nav__status i {
+  font-style: normal; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px 1px var(--color-glow-2);
+  animation: led-pulse 2s ease-in-out infinite;
+}
+@keyframes led-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+@media (max-width: 60rem) {
+  .nav__status span { display: none; }
+  .trustband { grid-template-columns: 1fr; gap: var(--space-md); }
+}
+
 /* closing wrap · spacing around the band */
 .closing-wrap {
   padding: var(--space-2xl) 0 var(--space-3xl);
@@ -744,7 +807,7 @@ a { color: inherit; }
   .nav { gap: var(--space-md); }
   .nav__links { display: none; }
   .hero__inner { grid-template-columns: 1fr; gap: var(--space-2xl); }
-  .apparatus { justify-self: start; margin-left: 1.5rem; }
+  .apparatus { justify-self: start; margin-left: var(--space-lg); }
   /* callouts become chip legend under the chamber — no side overflow on phones */
   .callouts { position: static; display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-xs); margin-top: var(--space-md); }
   .callout { position: static; flex-direction: row; border: 1px solid var(--color-rule); border-radius: var(--radius-pill); padding: 0.3125rem var(--space-sm); }
