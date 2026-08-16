@@ -1,6 +1,6 @@
-/* nib · hero halftone shader — DeepSeek-Harness register
- * fullscreen fragment shader: dot-grid halftone on cool charcoal,
- * dots breathe slowly, cursor raises dots + acid-green glow lens.
+/* nib · hero flow-field shader — DeepSeek-Harness register, rebuilt
+ * domain-warped fbm → swirling clouds · contour lines (dotted flow look)
+ * cursor bends the field (magnet) · scroll parallax shifts it
  * ONE ShaderMaterial · file://-safe (no fetch, no ESM)
  * reduced-motion → static frame
  * debug: window.__H = { uniforms, move(x,y), dispose() }
@@ -32,57 +32,74 @@
     var FRAG = [
       "precision highp float;",
       "uniform vec2 uRes;",
-      "uniform vec2 uMouse;",          /* NDC -1..1 */
+      "uniform vec2 uMouse;",            /* NDC -1..1 */
       "uniform float uTime;",
-      "uniform float uDrift;",          /* 0 = frozen (reduced motion) */
+      "uniform float uScroll;",          /* scrollY px — parallax */
+      "uniform float uDrift;",           /* 0 = frozen (reduced motion) */
 
       "float hash(vec2 p) {",
       "  p = fract(p * vec2(123.34, 456.21));",
       "  p += dot(p, p + 45.32);",
       "  return fract(p.x * p.y);",
       "}",
+      "float noise(vec2 p) {",
+      "  vec2 i = floor(p), f = fract(p);",
+      "  f = f * f * (3.0 - 2.0 * f);",
+      "  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),",
+      "             mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);",
+      "}",
+      "float fbm(vec2 p) {",
+      "  float v = 0.0, a = 0.5;",
+      "  for (int i = 0; i < 5; i++) { v += a * noise(p); p *= 2.03; a *= 0.5; }",
+      "  return v;",
+      "}",
 
       "void main() {",
       "  vec2 uv = gl_FragCoord.xy / uRes;",
       "  float aspect = uRes.x / uRes.y;",
-      "  vec2 guv = uv * vec2(aspect, 1.0);",
-      "  vec2 muv = uMouse * 0.5 + 0.5;",
-      "  muv.x *= aspect;",
+      "  vec2 p = uv * vec2(aspect, 1.0) * 3.0;",
 
-      /* slow global drift keeps the grid alive */
-      "  guv += vec2(uTime * 0.015, uTime * 0.011) * uDrift;",
+      /* time + scroll drift — the field moves with the page */
+      "  p += vec2(uTime * 0.030, uTime * 0.020 - uScroll * 0.0006) * uDrift;",
 
-      /* halftone grid, 70 cells across */
-      "  float N = 70.0;",
-      "  vec2 g = guv * N;",
-      "  vec2 cell = fract(g) - 0.5;",
-      "  vec2 id = floor(g);",
+      /* cursor: a magnet that bends the flow field */
+      "  vec2 m = uMouse * 0.5 + 0.5;",
+      "  m.x *= aspect;",
+      "  m *= 3.0;",
+      "  vec2 dir = normalize(p - m + 0.0001);",
+      "  float md = length(p - m);",
+      "  float influence = exp(-md * md * 1.1) * 0.9;",
+      "  p -= dir * influence * 0.9;",
 
-      /* per-dot breathing jitter (deterministic) */
-      "  float h = hash(id + floor(uTime * 0.5) * 1.0);",
-      "  float jx = (hash(id + 7.7) - 0.5) * 0.30;",
-      "  float jy = (hash(id + 13.1) - 0.5) * 0.30;",
-      "  vec2 c = cell - vec2(jx, jy);",
+      /* domain warp → swirling clouds */
+      "  vec2 q = vec2(fbm(p), fbm(p + vec2(5.2, 1.3)));",
+      "  vec2 r = vec2(fbm(p + q * 1.5 + vec2(1.7, 9.2)), fbm(p + q * 1.5 + vec2(8.3, 2.8)));",
+      "  float f = fbm(p + r * 2.0);",
 
-      /* cursor proximity → dot lift + green lens */
-      "  float d = length(guv - muv);",
-      "  float glow = exp(-d * d * 24.0);",
+      /* palette: charcoal void → acid-green clouds → bright crests */
+      "  vec3 deep   = vec3(0.075, 0.085, 0.090);",
+      "  vec3 green  = vec3(0.280, 0.560, 0.380);",
+      "  vec3 bright = vec3(0.470, 0.880, 0.550);",
+      "  vec3 col = mix(deep, green, smoothstep(0.35, 0.72, f));",
+      "  col = mix(col, bright, smoothstep(0.74, 0.96, f) * 0.85);",
 
-      "  float r = 0.26 * (0.30 + 0.70 * h);",
-      "  r += glow * 0.42;",
+      /* contour lines — the dotted flow-field look */
+      "  float contour = fract(f * 14.0);",
+      "  float line = smoothstep(0.90, 1.0, contour);",
+      "  col = mix(col, vec3(0.620, 0.920, 0.700), line * 0.30);",
 
-      "  float dotv = smoothstep(r, r - 0.10, length(c));",
+      /* cursor halo */
+      "  float glow = exp(-md * md * 5.0);",
+      "  col = mix(col, bright, glow * 0.55);",
 
-      /* palette: cool charcoal dots, acid-green glow lens */
-      "  vec3 base  = vec3(0.085, 0.095, 0.100);",
-      "  vec3 dotc  = vec3(0.155, 0.170, 0.165);",
-      "  vec3 green = vec3(0.47, 0.88, 0.55);",
-      "  vec3 col = mix(base, dotc, dotv);",
-      "  col = mix(col, green, glow * (0.30 + 0.70 * dotv));",
+      /* subtle blueprint grid overlay */
+      "  vec2 g = fract(uv * vec2(aspect * 26.0, 26.0));",
+      "  float grid = smoothstep(0.965, 1.0, max(g.x, g.y));",
+      "  col = mix(col, vec3(0.110, 0.125, 0.130), grid * 0.28);",
 
-      /* soft vignette — corners recede */
-      "  float v = smoothstep(1.45, 0.35, length(guv - vec2(aspect * 0.5, 0.5)));",
-      "  col *= 0.72 + 0.28 * v;",
+      /* vignette */
+      "  float v = smoothstep(1.40, 0.35, length(uv * vec2(aspect, 1.0) - vec2(aspect * 0.5, 0.5)));",
+      "  col *= 0.70 + 0.30 * v;",
 
       "  gl_FragColor = vec4(col, 1.0);",
       "}"
@@ -95,6 +112,7 @@
         uRes: { value: new THREE.Vector2(1, 1) },
         uMouse: { value: new THREE.Vector2(0.2, 0.4) },
         uTime: { value: 0 },
+        uScroll: { value: 0 },
         uDrift: { value: reduced ? 0 : 1 }
       },
       depthWrite: false,
@@ -125,6 +143,13 @@
       section.addEventListener("pointermove", onMove);
     }
 
+    /* scroll parallax — cheap uniform update, no layout reads */
+    function onScroll() {
+      material.uniforms.uScroll.value = window.scrollY || window.pageYOffset || 0;
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
     var last = performance.now();
     function frame(now) {
       if (paused || !running) return;
@@ -142,7 +167,7 @@
     });
 
     if (reduced) {
-      material.uniforms.uTime.value = 3.2;   /* static poster frame */
+      material.uniforms.uTime.value = 2.4;   /* static poster frame */
       renderer.render(scene, camera);
     } else {
       start();
