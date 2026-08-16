@@ -48,7 +48,7 @@
   --text-display:    clamp(3.25rem, 7vw + 1rem, 8.5rem);   /* hero masthead */
   --text-display-s:  clamp(2.25rem, 4vw + 1rem, 4.5rem);   /* section heads */
   --text-hero-num:   clamp(4.5rem, 9vw + 1rem, 11rem);     /* the counter */
-  --text-punch:      clamp(3rem, 7.5vw + 1rem, 8rem);      /* the scream */
+  --text-punch:      clamp(2.5rem, 5vw + 0.75rem, 5.25rem);  /* the scream */
   --text-rail-num:   clamp(4rem, 7vw + 1rem, 6.5rem);      /* fly rail */
   --text-receipt-num: clamp(3.5rem, 6vw + 1rem, 6rem);     /* receipt counts */
 

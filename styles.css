@@ -136,7 +136,18 @@ a { color: inherit; }
     var(--color-paper);
   overflow: clip;
 }
+/* hero halftone shader canvas · absolute layer, out of flow */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 .hero__grid {
+  position: relative;
+  z-index: 1;
   max-width: var(--page-max);
   margin-inline: auto;
   display: grid;
@@ -522,7 +533,7 @@ a { color: inherit; }
     radial-gradient(70% 80% at 85% 90%, oklch(38% 0.13 145) 0%, transparent 60%),
     var(--color-band);
   color: var(--color-bone);
-  padding: var(--space-4xl) var(--page-gutter);
+  padding: var(--space-2xl) var(--page-gutter);
   text-align: center;
   overflow: clip;
 }
@@ -538,7 +549,7 @@ a { color: inherit; }
   z-index: 1;
   max-width: 60rem;
   margin-inline: auto;
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   background: radial-gradient(70% 90% at 50% 50%, oklch(8% 0.01 250 / 0.62) 0%, transparent 72%);
 }
 .scream__line {
