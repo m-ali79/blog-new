@@ -516,6 +516,7 @@ a { color: inherit; }
    SCREAM · full-bleed coral band
    ============================================================ */
 .scream {
+  position: relative;
   background:
     radial-gradient(80% 90% at 20% 10%, var(--color-band-2) 0%, transparent 55%),
     radial-gradient(70% 80% at 85% 90%, oklch(38% 0.13 145) 0%, transparent 60%),
@@ -524,6 +525,21 @@ a { color: inherit; }
   padding: var(--space-4xl) var(--page-gutter);
   text-align: center;
   overflow: clip;
+}
+/* shader canvas · full-bleed behind the text */
+#punch-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+/* dark scrim behind the words — shader glow must not wash the type */
+.scream__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 60rem;
+  margin-inline: auto;
+  padding: var(--space-xl);
+  background: radial-gradient(70% 90% at 50% 50%, oklch(8% 0.01 250 / 0.62) 0%, transparent 72%);
 }
 .scream__line {
   margin: 0 0 var(--space-lg);
