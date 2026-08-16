@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="nib connects to your site, studies what ranks for your topic, writes the long-form draft in your voice, scores it against seo practice, and files it as a wordpress draft — you keep the approve button." />
-  <meta name="theme-color" content="#0b0a12" />
-
-  <title>nib — a research-to-published post, run as one instrument.</title>
-  <meta property="og:title" content="nib — research to published, one instrument." />
-  <meta property="og:description" content="connect your site, drop a keyword, get a 2,000+ word seo-scored draft filed in wordpress. you keep the approve button." />
+  <title>nib — three days of work. eight seconds to watch.</title>
+  <meta name="description" content="nib connects to your site, studies what ranks, writes the 2,000-word draft in your voice, scores it, and files it in wordpress as a draft. you press publish." />
+  <meta property="og:title" content="nib — three days of work. eight seconds to watch." />
+  <meta property="og:description" content="watch a publish-ready blog post get researched, written, scored, and filed to wordpress — live." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#0b0a12" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0c14'/%3E%3Crect x='7.25' y='3' width='1.5' height='10' rx='.75' fill='%23e8b04b'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +22,7 @@
 <body>
   <a class="skip-link" href="#main">skip to content</a>
 
-  <!-- ─── nav · n5 floating pill · detached, blur, brass cta ─── -->
+  <!-- ─── nav · n5 floating pill · led · brass cta ─── -->
   <header class="nav">
     <a class="nav__brand" href="#" aria-label="nib — home">
       <span class="nav__mark" aria-hidden="true"></span>
@@ -40,286 +39,290 @@
 
   <main id="main">
 
-    <!-- ─── hero · copy left · apparatus right · blueprint grid ─── -->
+    <!-- ─── hero · the live stage ─── -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow reveal" style="--i:0">
-            <span class="eyebrow__dot" aria-hidden="true"></span>
-            00 · a content instrument, not a chatbot
-          </p>
-          <h1 class="hero__title reveal" id="hero-title" style="--i:1">
-            research to published, run as <em>one</em> instrument.
-          </h1>
-          <p class="hero__lede reveal" style="--i:2">
-            nib connects to your site, studies what already ranks for your
-            topic, writes the long-form draft in your voice, scores it against
-            seo practice, and files it in wordpress as a draft with the meta
-            filled in. you keep the approve button.
-          </p>
-          <div class="hero__cta reveal" style="--i:3">
-            <a class="btn btn--accent" href="#pricing">start free trial</a>
-            <a class="btn btn--ghost" href="#stages">see the five stages</a>
+        <p class="eyebrow reveal" style="--i:0">
+          <span class="eyebrow__dot" aria-hidden="true"></span>
+          00 · watch it run
+        </p>
+        <h1 class="hero__title reveal" id="hero-title" style="--i:1">
+          three days of work. eight seconds to <em>watch</em>.
+        </h1>
+        <p class="hero__lede reveal" style="--i:2">
+          nib connects to your site, studies what already ranks for your
+          keyword, writes the 2,000+ word draft in your voice, scores it
+          against seo practice, and files it in wordpress as a draft.
+          you press publish.
+        </p>
+
+        <!-- the moment · live run panel -->
+        <div class="run reveal" style="--i:3" aria-label="live demo — a blog post being written in real time">
+          <div class="run__counter">
+            <p class="run__num" id="run-num">0</p>
+            <p class="run__unit">words in the draft</p>
           </div>
-          <p class="hero__meta reveal" style="--i:4">
-            <span>14 days free<i aria-hidden="true"></i></span>
-            <span>no card required<i aria-hidden="true"></i></span>
-            <span>cancel anytime</span>
-          </p>
+          <div class="run__chamber" aria-hidden="true">
+            <span class="chamber__electrode" style="--y: 18%"></span>
+            <span class="chamber__electrode" style="--y: 38%"></span>
+            <span class="chamber__electrode" style="--y: 58%"></span>
+            <span class="chamber__electrode" style="--y: 78%"></span>
+            <span class="chamber__filament"></span>
+            <span class="chamber__glow"></span>
+          </div>
+          <div class="run__side">
+            <p class="run__feed" id="run-feed">standing by</p>
+            <p class="run__hint">a real run, at demo speed — the machine files it as a draft either way</p>
+            <span class="status" id="run-chip" hidden><i aria-hidden="true"></i>draft ready</span>
+          </div>
+          <div class="run__bar" aria-hidden="true"><span id="run-bar-fill"></span></div>
         </div>
 
-        <!-- apparatus · filament chamber · the only light source -->
-        <figure class="apparatus reveal" style="--i:2" aria-label="The nib pipeline rendered as a filament chamber — research, writing, seo scoring and publishing stages marked along the filament.">
-          <div class="apparatus__rig">
-            <div class="chamber">
-              <span class="chamber__electrode" style="--y: 16%" aria-hidden="true"></span>
-              <span class="chamber__electrode" style="--y: 34%" aria-hidden="true"></span>
-              <span class="chamber__electrode" style="--y: 52%" aria-hidden="true"></span>
-              <span class="chamber__electrode" style="--y: 70%" aria-hidden="true"></span>
-              <span class="chamber__electrode" style="--y: 88%" aria-hidden="true"></span>
-              <span class="chamber__filament" aria-hidden="true"></span>
-              <span class="chamber__glow" aria-hidden="true"></span>
-            </div>
-            <ul class="callouts">
-              <li class="callout callout--r" style="--y: 13%">
-                <span>connect <strong>wordpress</strong></span>
-              </li>
-              <li class="callout callout--l" style="--y: 31%">
-                <span>study <strong>top 10 serps</strong></span>
-              </li>
-              <li class="callout callout--r" style="--y: 49%">
-                <span>draft <strong>2,000+ words</strong></span>
-              </li>
-              <li class="callout callout--l" style="--y: 67%">
-                <span>score <strong>0–100 seo</strong></span>
-              </li>
-              <li class="callout callout--r" style="--y: 85%">
-                <span>file as <strong>wp draft</strong></span>
-              </li>
-            </ul>
-          </div>
-          <p class="apparatus__readout" id="run-readout" aria-hidden="true">standing by</p>
-          <p class="apparatus__caption" aria-hidden="true">nib · rx-05 · 5 stages</p>
-        </figure>
+        <div class="hero__cta reveal" style="--i:4">
+          <a class="btn btn--accent btn--lg" href="#pricing">start free trial</a>
+          <a class="btn btn--ghost btn--lg" href="#stages">see how it runs</a>
+        </div>
+        <p class="hero__meta reveal" style="--i:5">
+          <span>14 days free<i aria-hidden="true"></i></span>
+          <span>no card required<i aria-hidden="true"></i></span>
+          <span>cancel anytime</span>
+        </p>
       </div>
     </section>
 
-    <!-- ─── meter strip · printed readout, static ─── -->
+    <!-- ─── meter strip · printed readout ─── -->
     <aside class="meter" aria-label="pipeline readout">
       <p class="meter__label">pipeline · 5 stages</p>
-      <div class="meter__bars" aria-hidden="true">
-        <!-- 64 bars · heights + opacity generated by script from a gaussian envelope -->
-      </div>
+      <div class="meter__bars" aria-hidden="true"></div>
       <p class="meter__label meter__label--right">output · wp draft</p>
     </aside>
 
-    <!-- ─── stages · narrative workflow 1.0 → 5.0 ─── -->
-    <section class="stages" id="stages" aria-labelledby="stages-title">
-      <header class="stages__head">
-        <p class="eyebrow reveal" style="--i:0">
-          <span class="eyebrow__dot" aria-hidden="true"></span>
-          01 · the run
-        </p>
-        <h2 class="stages__title reveal" id="stages-title" style="--i:1">
-          one keyword in. one publish-ready draft out.
-        </h2>
-      </header>
-
-      <!-- 1.0 connect -->
-      <article class="stage reveal">
-        <div class="stage__info">
-          <p class="stage__num">1.0 · connect</p>
-          <h3 class="stage__name">plug in your site once.</h3>
-          <p class="stage__desc">
-            point nib at your wordpress install, grant it author access, and
-            let it read your existing posts. it learns your headings, your
-            sentence length, the words you overuse — everything that makes
-            your blog sound like you and not like a template.
-          </p>
-          <ul class="stage__tags">
-            <li>wordpress rest api</li>
-            <li>author-level access</li>
-            <li>voice profile from your archive</li>
+    <!-- ─── stages · sticky scroll-sequence · the fly-through ─── -->
+    <section class="fly" id="stages" aria-label="how nib works — five stages">
+      <div class="fly__rail" aria-hidden="true">
+        <div class="fly__pin">
+          <p class="fly__num" id="fly-num">1.0</p>
+          <p class="fly__name" id="fly-name">connect</p>
+          <ul class="fly__dots" id="fly-dots">
+            <li class="is-on" aria-hidden="true"></li>
+            <li aria-hidden="true"></li>
+            <li aria-hidden="true"></li>
+            <li aria-hidden="true"></li>
+            <li aria-hidden="true"></li>
           </ul>
+          <p class="fly__lede" id="fly-lede">plug in your site once.</p>
         </div>
-        <div class="card">
-          <div class="card__bar">
-            <span class="meta">connection</span>
-            <span class="status"><i aria-hidden="true"></i>authorized</span>
-          </div>
-          <div class="card__doc">
-            <p class="card__doc-title">yoursite.com</p>
-            <div class="rule" aria-hidden="true"></div>
-            <p>role · author</p>
-            <p>posts read · 128</p>
-            <p>voice profile · <span class="dim">building…</span></p>
-          </div>
-        </div>
-      </article>
+      </div>
 
-      <!-- 2.0 research -->
-      <article class="stage">
-        <div class="stage__info">
-          <p class="stage__num">2.0 · research</p>
-          <h3 class="stage__name">it reads what ranks before it writes.</h3>
-          <p class="stage__desc">
-            for your keyword, nib pulls the pages currently holding the top
-            spots, takes apart their structure — headings covered, questions
-            answered, depth per section — and marks the questions they leave
-            unanswered. that gap list becomes your outline. you’re not
-            rewriting the leaderboards; you’re covering what they missed.
-          </p>
-          <ul class="stage__tags">
-            <li>top-10 serp scan</li>
-            <li>competitor outline diff</li>
-            <li>content-gap list</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card__bar">
-            <span class="meta">serp readout · "email marketing for plumbers"</span>
-            <span class="status"><i aria-hidden="true"></i>10 pages parsed</span>
-          </div>
-          <div class="card__row">
-            <span class="rank">#1</span>
-            <span class="label">pricing-table comparison</span>
-            <span class="gap">no local examples</span>
-          </div>
-          <div class="card__row">
-            <span class="rank">#2</span>
-            <span class="label">checklist + faq</span>
-            <span class="gap">no ppc section</span>
-          </div>
-          <div class="card__row">
-            <span class="rank">#3</span>
-            <span class="label">long-form guide</span>
-            <span class="gap">stale stats, 2022</span>
-          </div>
-          <div class="card__row">
-            <span class="rank">gap</span>
-            <span class="label">nobody covers seasonal timing</span>
-            <span class="gap">→ outline gets it</span>
-          </div>
-        </div>
-      </article>
+      <div class="fly__track">
 
-      <!-- 3.0 write -->
-      <article class="stage">
-        <div class="stage__info">
-          <p class="stage__num">3.0 · write</p>
-          <h3 class="stage__name">the draft arrives long, structured, and in your voice.</h3>
-          <p class="stage__desc">
-            the article is written section by section against the outline —
-            2,000+ words, proper headline, meta title and description drafted
-            to length, images placed where the argument needs them. the voice
-            profile from stage 1.0 keeps the register yours instead of the
-            model's default.
-          </p>
-          <ul class="stage__tags">
-            <li>2,000+ words</li>
-            <li>headline + meta title/description</li>
-            <li>images generated per section</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card__bar">
-            <span class="meta">draft · section 2 of 6</span>
-            <span class="status"><i aria-hidden="true"></i>writing</span>
+        <article class="pane" data-num="1.0" data-name="connect" data-lede="plug in your site once.">
+          <div class="pane__head">
+            <p class="pane__kicker">1.0 · connect</p>
+            <h2 class="pane__title">plug in your site once.</h2>
+            <p class="pane__desc">
+              point nib at your wordpress install, grant it author access,
+              and let it read your existing posts. it learns your headings,
+              your sentence length, the words you overuse — everything that
+              makes your blog sound like you and not like a template.
+            </p>
           </div>
-          <div class="card__doc">
-            <p class="card__doc-title">the quiet season is a pricing problem, not a demand problem</p>
-            <div class="rule" aria-hidden="true"></div>
-            <p>every november, call volume drops and shop owners panic…</p>
-            <p class="dim">meta title · plumbing marketing: the off-season playbook (58 chars)</p>
-            <p class="dim">meta description · how three trades businesses restructured pricing… (154 chars)</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- 4.0 score -->
-      <article class="stage">
-        <div class="stage__info">
-          <p class="stage__num">4.0 · score</p>
-          <h3 class="stage__name">a 0–100 score, and the fixes behind it.</h3>
-          <p class="stage__desc">
-            before anything leaves the building, the draft is scored against
-            seo practice: keyword placement, readability, internal links to
-            your existing posts, meta lengths. anything under the bar comes
-            back with the specific fix attached — not a red badge, an
-            instruction.
-          </p>
-          <ul class="stage__tags">
-            <li>0–100 seo score</li>
-            <li>readability + keyword checks</li>
-            <li>internal links to your posts</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card__bar">
-            <span class="meta">scorecard</span>
-            <span class="status"><i aria-hidden="true"></i>re-checked per edit</span>
-          </div>
-          <div class="card__score">
-            <div class="dial" style="--v: 92" role="img" aria-label="seo score 92 out of 100">
-              <span class="dial__num">92</span>
+          <div class="card">
+            <div class="card__bar">
+              <span class="meta">connection</span>
+              <span class="status"><i aria-hidden="true"></i>authorized</span>
             </div>
-            <ul class="dial__checks">
-              <li>keyword in title, url, first 100 words</li>
-              <li>readability · grade 8</li>
-              <li>internal links · 4</li>
-              <li>meta description · 154 chars</li>
-            </ul>
+            <div class="card__doc">
+              <p class="card__doc-title">yoursite.com</p>
+              <div class="rule" aria-hidden="true"></div>
+              <p>role · author</p>
+              <p>posts read · 128</p>
+              <p>voice profile · <span class="dim">building…</span></p>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 5.0 publish -->
-      <article class="stage">
-        <div class="stage__info">
-          <p class="stage__num">5.0 · publish</p>
-          <h3 class="stage__name">it lands in wordpress as a draft. you press the button.</h3>
-          <p class="stage__desc">
-            the finished draft arrives in your wordpress posts table — meta
-            filled, images uploaded, internal links live. you read it, maybe
-            nudge a sentence, and hit publish. nib never publishes on its
-            own; the approval step stays yours, always.
-          </p>
-          <ul class="stage__tags">
-            <li>wp draft · meta prefilled</li>
-            <li>images uploaded to media library</li>
-            <li>you approve before it goes live</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card__bar">
-            <span class="meta">posts · drafts</span>
-            <span class="status"><i aria-hidden="true"></i>awaiting your review</span>
+        <article class="pane" data-num="2.0" data-name="research" data-lede="it reads what ranks before it writes.">
+          <div class="pane__head">
+            <p class="pane__kicker">2.0 · research</p>
+            <h2 class="pane__title">it reads what ranks before it writes.</h2>
+            <p class="pane__desc">
+              for your keyword, nib pulls the pages currently holding the top
+              spots, takes apart their structure — headings covered, questions
+              answered, depth per section — and marks the questions they leave
+              unanswered. that gap list becomes your outline. you’re not
+              rewriting the leaderboards; you’re covering what they missed.
+            </p>
           </div>
-          <div class="card__doc">
-            <p class="card__doc-title">the off-season playbook for trade businesses</p>
-            <div class="rule" aria-hidden="true"></div>
-            <p>2,340 words · 3 images · score 92</p>
-            <p class="dim">status · draft — publish when ready</p>
+          <div class="card">
+            <div class="card__bar">
+              <span class="meta">serp readout · “email marketing for plumbers”</span>
+              <span class="status"><i aria-hidden="true"></i>10 pages parsed</span>
+            </div>
+            <div class="card__row">
+              <span class="rank">#1</span>
+              <span class="label">pricing-table comparison</span>
+              <span class="gap">no local examples</span>
+            </div>
+            <div class="card__row">
+              <span class="rank">#2</span>
+              <span class="label">checklist + faq</span>
+              <span class="gap">no ppc section</span>
+            </div>
+            <div class="card__row">
+              <span class="rank">#3</span>
+              <span class="label">long-form guide</span>
+              <span class="gap">stale stats, 2022</span>
+            </div>
+            <div class="card__row">
+              <span class="rank">gap</span>
+              <span class="label">nobody covers seasonal timing</span>
+              <span class="gap">→ outline gets it</span>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+
+        <article class="pane" data-num="3.0" data-name="write" data-lede="long, structured, in your voice.">
+          <div class="pane__head">
+            <p class="pane__kicker">3.0 · write</p>
+            <h2 class="pane__title">long, structured, in your voice.</h2>
+            <p class="pane__desc">
+              the article is written section by section against the outline —
+              2,000+ words, proper headline, meta title and description drafted
+              to length, images placed where the argument needs them. the voice
+              profile from stage 1.0 keeps the register yours instead of the
+              model’s default.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__bar">
+              <span class="meta">draft · section 2 of 6</span>
+              <span class="status"><i aria-hidden="true"></i>writing</span>
+            </div>
+            <div class="card__doc">
+              <p class="card__doc-title">the quiet season is a pricing problem, not a demand problem</p>
+              <div class="rule" aria-hidden="true"></div>
+              <p>every november, call volume drops and shop owners panic…</p>
+              <p class="dim">meta title · plumbing marketing: the off-season playbook (58 chars)</p>
+              <p class="dim">meta description · how three trades businesses restructured pricing… (154 chars)</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="pane" data-num="4.0" data-name="score" data-lede="a 0–100 score, and the fixes behind it.">
+          <div class="pane__head">
+            <p class="pane__kicker">4.0 · score</p>
+            <h2 class="pane__title">a 0–100 score, and the fixes behind it.</h2>
+            <p class="pane__desc">
+              before anything leaves the building, the draft is scored against
+              seo practice: keyword placement, readability, internal links to
+              your existing posts, meta lengths. anything under the bar comes
+              back with the specific fix attached — not a red badge, an
+              instruction.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__bar">
+              <span class="meta">scorecard</span>
+              <span class="status"><i aria-hidden="true"></i>re-checked per edit</span>
+            </div>
+            <div class="card__score">
+              <div class="dial" style="--v: 0" role="img" aria-label="seo score 92 out of 100">
+                <span class="dial__num" id="dial-num">0</span>
+              </div>
+              <ul class="dial__checks">
+                <li>keyword in title, url, first 100 words</li>
+                <li>readability · grade 8</li>
+                <li>internal links · 4</li>
+                <li>meta description · 154 chars</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="pane" data-num="5.0" data-name="publish" data-lede="you press the button. always.">
+          <div class="pane__head">
+            <p class="pane__kicker">5.0 · publish</p>
+            <h2 class="pane__title">you press the button. always.</h2>
+            <p class="pane__desc">
+              the finished draft arrives in your wordpress posts table — meta
+              filled, images uploaded, internal links live. you read it, maybe
+              nudge a sentence, and hit publish. nib never publishes on its
+              own; the approval step stays yours, always.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__bar">
+              <span class="meta">posts · drafts</span>
+              <span class="status"><i aria-hidden="true"></i>awaiting your review</span>
+            </div>
+            <div class="card__doc">
+              <p class="card__doc-title">the off-season playbook for trade businesses</p>
+              <div class="rule" aria-hidden="true"></div>
+              <p>2,340 words · 3 images · score 92</p>
+              <p class="dim">status · draft — publish when ready</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
+    <!-- ─── the receipt · the finished artifact ─── -->
+    <section class="receipt" aria-labelledby="receipt-title">
+      <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 01 · the output</p>
+      <h2 class="receipt__title reveal" id="receipt-title">what lands in your wordpress.</h2>
 
-    <!-- ─── pricing · three hairline plans ─── -->
-    <section class="stages" id="pricing" aria-labelledby="pricing-title" style="padding-top: var(--space-2xl);">
-      <header class="stages__head">
-        <p class="eyebrow reveal" style="--i:0">
-          <span class="eyebrow__dot" aria-hidden="true"></span>
-          02 · pricing
-        </p>
-        <h2 class="stages__title reveal" id="pricing-title" style="--i:1">
-          pay per published decision.
-        </h2>
+      <figure class="receipt__paper reveal">
+        <div class="receipt__head">
+          <span class="meta">posts · drafts · today</span>
+          <span class="status"><i aria-hidden="true"></i>awaiting your review</span>
+        </div>
+        <p class="receipt__headline">the off-season playbook for trade businesses</p>
+        <div class="receipt__grid">
+          <div class="receipt__cell">
+            <span class="k">words</span>
+            <span class="v" data-count="2340">0</span>
+          </div>
+          <div class="receipt__cell">
+            <span class="k">seo score</span>
+            <span class="v" data-count="92">0</span>
+          </div>
+          <div class="receipt__cell">
+            <span class="k">internal links</span>
+            <span class="v" data-count="4">0</span>
+          </div>
+          <div class="receipt__cell">
+            <span class="k">images</span>
+            <span class="v" data-count="3">0</span>
+          </div>
+        </div>
+        <div class="receipt__meta">
+          <p><span class="k">meta title</span> plumbing marketing: the off-season playbook (58 chars)</p>
+          <p><span class="k">meta description</span> how three trades businesses restructured pricing… (154 chars)</p>
+          <p><span class="k">status</span> draft — you press publish</p>
+        </div>
+      </figure>
+    </section>
+
+    <!-- ─── the punch · mid-page pain line ─── -->
+    <section class="punch" aria-label="the cost of not publishing">
+      <p class="punch__line">
+        your competitor publishes daily.<br />
+        you published <em>last month</em>.
+      </p>
+      <p class="punch__sub">organic traffic compounds. every silent week is a week they climb and you don’t.</p>
+    </section>
+
+    <!-- ─── pricing · three plans ─── -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <header class="pricing__head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 02 · pricing</p>
+        <h2 class="pricing__title reveal" id="pricing-title">pay per published decision.</h2>
       </header>
 
       <div class="plans">
-        <article class="plan">
+        <article class="plan reveal">
           <p class="plan__name">solo</p>
           <p class="plan__price"><span class="plan__num">$29</span><span class="mo">/mo</span></p>
           <p class="plan__unit">4 posts · 1 site</p>
@@ -331,7 +334,7 @@
           <a class="btn btn--ghost btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan plan--feature">
+        <article class="plan plan--feature reveal">
           <span class="plan__badge">most teams</span>
           <p class="plan__name">studio</p>
           <p class="plan__price"><span class="plan__num">$79</span><span class="mo">/mo</span></p>
@@ -345,7 +348,7 @@
           <a class="btn btn--accent btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan">
+        <article class="plan reveal">
           <p class="plan__name">agency</p>
           <p class="plan__price"><span class="plan__num">$249</span><span class="mo">/mo</span></p>
           <p class="plan__unit">60 posts · unlimited sites</p>
@@ -359,22 +362,17 @@
       </div>
     </section>
 
-    <!-- ─── faq · honest questions, direct answers ─── -->
-    <section class="stages" id="faq" aria-labelledby="faq-title">
-      <header class="stages__head">
-        <p class="eyebrow reveal" style="--i:0">
-          <span class="eyebrow__dot" aria-hidden="true"></span>
-          03 · questions
-        </p>
-        <h2 class="stages__title reveal" id="faq-title" style="--i:1">
-          the things people actually ask.
-        </h2>
+    <!-- ─── faq ─── -->
+    <section class="faqsec" id="faq" aria-labelledby="faq-title">
+      <header class="faqsec__head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 03 · questions</p>
+        <h2 class="faqsec__title reveal" id="faq-title">the things people actually ask.</h2>
       </header>
 
       <div class="faq">
         <details class="faq__item" open>
           <summary>will google punish ai-written content?</summary>
-          <p>google’s stated position punishes content made for rankings instead of people — not the tool that typed it. nib's drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p>
+          <p>google’s stated position punishes content made for rankings instead of people — not the tool that typed it. nib’s drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p>
         </details>
         <details class="faq__item">
           <summary>how does it match my brand voice?</summary>
@@ -386,16 +384,16 @@
         </details>
         <details class="faq__item">
           <summary>what if the draft isn’t good?</summary>
-          <p>each section can be regenerated with a nudge — "shorter", "more examples", "less jargon". the 0–100 score tells you exactly what's weak before you spend time reading.</p>
+          <p>each section can be regenerated with a nudge — “shorter”, “more examples”, “less jargon”. the 0–100 score tells you exactly what’s weak before you spend time reading.</p>
         </details>
         <details class="faq__item">
           <summary>does it work outside wordpress?</summary>
-          <p>wordpress first — it's where most business blogs live. webflow and shopify are on the roadmap. if you’re on another stack, the drafts export as clean markdown.</p>
+          <p>wordpress first — it’s where most business blogs live. webflow and shopify are on the roadmap. if you’re on another stack, the drafts export as clean markdown.</p>
         </details>
       </div>
     </section>
 
-    <!-- ─── trust band · no invented stats, real product facts ─── -->
+    <!-- ─── trust band ─── -->
     <section class="trustband" aria-label="what nib will and will not do">
       <div class="trustband__item">
         <span class="k">access</span>
@@ -411,9 +409,9 @@
       </div>
     </section>
 
-    <!-- ─── closing cta band ─── -->
+    <!-- ─── closing · the deep beat ─── -->
     <div class="closing-wrap">
-      <section class="closing" aria-labelledby="closing-title">
+      <section class="closing reveal" aria-labelledby="closing-title">
         <h2 class="closing__title" id="closing-title">
           your next 50 posts are a keyword list away.
         </h2>
@@ -422,8 +420,8 @@
           everything arrives as a draft you can veto.
         </p>
         <div class="hero__cta">
-          <a class="btn btn--accent" href="#pricing">start free trial</a>
-          <a class="btn btn--ghost" href="#stages">see the five stages</a>
+          <a class="btn btn--accent btn--lg" href="#pricing">start free trial</a>
+          <a class="btn btn--ghost btn--lg" href="#stages">see how it runs</a>
         </div>
         <p class="hero__meta">
           <span>14 days free<i aria-hidden="true"></i></span>
@@ -433,7 +431,7 @@
     </div>
   </main>
 
-  <!-- ─── footer · ft5 statement ─── -->
+  <!-- ─── footer · statement ─── -->
   <footer class="foot">
     <div class="foot__inner">
       <p class="foot__statement">the draft arrives finished. the byline stays yours.</p>
@@ -457,74 +455,176 @@
   </footer>
 
   <script>
-    // the live run — the apparatus demonstrates the product, once per view
+  (function () {
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ── 1 · the hero run — counter, feed, chamber, bar ───────── */
     (function () {
-      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var readout = document.getElementById("run-readout");
-      var callouts = [].slice.call(document.querySelectorAll(".callout"));
-      var electrodes = [].slice.call(document.querySelectorAll(".chamber__electrode"));
-      if (!readout || !callouts.length) return;
-      // callout order in DOM: connect, study, draft, score, file
+      var num = document.getElementById("run-num");
+      var feed = document.getElementById("run-feed");
+      var chip = document.getElementById("run-chip");
+      var bar = document.getElementById("run-bar-fill");
+      var electrodes = [].slice.call(document.querySelectorAll(".run__chamber .chamber__electrode"));
+      if (!num) return;
       var steps = [
-        { txt: "connecting · wordpress", c: 0, e: 0 },
-        { txt: "reading top 10 results", c: 1, e: 1 },
-        { txt: "writing · <span id=\"wordcount\">0</span> words", c: 2, e: 2 },
-        { txt: "seo check · <span id=\"scoretick\">00</span>/100", c: 3, e: 3 },
-        { txt: "filed as wp draft", c: 4, e: 4 }
+        { t: "connecting · wordpress", d: 1200, e: 0 },
+        { t: "reading top 10 results", d: 1200, e: 1 },
+        { t: "writing the draft", d: 2600, e: 2, count: true },
+        { t: "seo check", d: 1300, e: 3 },
+        { t: "filed as wp draft", d: 1100, e: 3 }
       ];
-      var li = null;
-      function clear() {
-        callouts.forEach(function (c) { c.classList.remove("is-active"); });
-        electrodes.forEach(function (e) { e.classList.remove("is-active"); });
+      var total = steps.reduce(function (a, s) { return a + s.d; }, 0);
+      var timer = null, raf = null, running = false;
+
+      function clearLeds() {
+        electrodes.forEach(function (el) { el.classList.remove("is-active"); });
       }
-      function runStep(i) {
-        if (i >= steps.length) {
-          clear();
-          readout.innerHTML = "draft ready \u00b7 awaiting you";
-          li = null;
-          return;
-        }
-        var st = steps[i];
-        clear();
-        readout.innerHTML = st.txt;
-        callouts[st.c].classList.add("is-active");
-        electrodes[st.e].classList.add("is-active");
-        var dur = 1500;
-        if (i === 2) { // word counter 0 -> 2340
-          var wc = document.getElementById("wordcount");
-          var t0 = performance.now(), D = 1600;
-          (function tick(t) {
-            var p = Math.min(1, (t - t0) / D);
-            wc.textContent = Math.round(2340 * p).toLocaleString("en-US");
-            if (p < 1) requestAnimationFrame(tick); 
-          })(t0);
-          dur = 1800;
-        }
-        if (i === 3) { // score 0 -> 92
-          var sc = document.getElementById("scoretick");
-          var s0 = performance.now(), S = 1300;
-          (function tock(t) {
-            var p = Math.min(1, (t - s0) / S);
-            sc.textContent = String(Math.round(92 * p)).padStart(2, "0");
-            if (p < 1) requestAnimationFrame(tock);
-          })(s0);
-          dur = 1500;
-        }
-        li = setTimeout(function () { runStep(i + 1); }, dur);
+      function setBar(p) { if (bar) bar.style.transform = "scaleX(" + p + ")"; }
+      function kill() {
+        if (timer) clearTimeout(timer); timer = null;
+        if (raf) cancelAnimationFrame(raf); raf = null;
+        running = false;
       }
-      function boot() { clear(); runStep(0); }
-      if (reduced) { readout.textContent = "5 stages \u00b7 one run \u00b7 wp draft out"; return; }
-      // start when the hero is actually seen; re-run when re-entering view
+
+      function play() {
+        kill(); running = true;
+        if (chip) chip.hidden = true;
+        var t0 = performance.now();
+        (function frame(now) {
+          var el = now - t0;
+          setBar(Math.min(1, el / total));
+          if (el >= total) { finish(); return; }
+          raf = requestAnimationFrame(frame);
+        })(t0);
+
+        var i = 0;
+        function step() {
+          if (i >= steps.length) return;
+          var st = steps[i];
+          feed.textContent = st.t;
+          clearLeds();
+          if (electrodes[st.e]) electrodes[st.e].classList.add("is-active");
+          if (st.count) {
+            var c0 = performance.now(), D = st.d - 200;
+            (function cnt(now) {
+              var p = Math.min(1, (now - c0) / D);
+              num.textContent = Math.round(2340 * p).toLocaleString("en-US");
+              if (p < 1 && running) raf = requestAnimationFrame(cnt);
+            })(c0);
+          }
+          timer = setTimeout(function () { i++; step(); }, st.d);
+        }
+        step();
+      }
+
+      function finish() {
+        running = false;
+        feed.textContent = "draft ready · in your wordpress";
+        clearLeds();
+        if (chip) chip.hidden = false;
+        setBar(1);
+      }
+
+      if (reduced) {
+        num.textContent = "2,340";
+        feed.textContent = "draft ready · in your wordpress";
+        if (chip) chip.hidden = false;
+        setBar(1);
+        return;
+      }
       var io = new IntersectionObserver(function (ents) {
         ents.forEach(function (en) {
-          if (en.isIntersecting && !li) { boot(); }
-          else if (!en.isIntersecting && li) { clearTimeout(li); li = null; clear(); readout.textContent = "standing by"; }
+          if (en.isIntersecting && !running) { play(); }
+          else if (!en.isIntersecting && running) { kill(); num.textContent = "0"; feed.textContent = "standing by"; setBar(0); clearLeds(); if (chip) chip.hidden = true; }
         });
-      }, { threshold: 0.3 });
-      io.observe(document.querySelector(".apparatus"));
+      }, { threshold: 0.35 });
+      io.observe(document.querySelector(".run"));
     })();
 
-    // one-shot reveal · IntersectionObserver, never scroll listeners
+    /* ── 2 · the fly-through — pinned rail syncs to panes ─────── */
+    (function () {
+      var pin = document.querySelector(".fly__pin");
+      var panes = [].slice.call(document.querySelectorAll(".pane"));
+      var numEl = document.getElementById("fly-num");
+      var nameEl = document.getElementById("fly-name");
+      var ledeEl = document.getElementById("fly-lede");
+      var dots = [].slice.call(document.querySelectorAll("#fly-dots li"));
+      if (!pin || !panes.length) return;
+
+      function sync() {
+        var mid = window.innerHeight * 0.5;
+        var active = 0;
+        panes.forEach(function (p, i) {
+          var b = p.getBoundingClientRect();
+          if (b.top <= mid && b.bottom >= mid) active = i;
+        });
+        var p = panes[active];
+        numEl.textContent = p.dataset.num;
+        nameEl.textContent = p.dataset.name;
+        ledeEl.textContent = p.dataset.lede;
+        dots.forEach(function (d, i) { d.classList.toggle("is-on", i === active); });
+        pin.classList.toggle("is-swap", true);
+        setTimeout(function () { pin.classList.remove("is-swap"); }, 240);
+      }
+      if (!reduced) {
+        var ticking = false;
+        window.addEventListener("scroll", function () {
+          if (!ticking) { requestAnimationFrame(function () { sync(); ticking = false; }); ticking = true; }
+        }, { passive: true });
+        sync();
+      } else {
+        numEl.textContent = "1.0 – 5.0";
+        nameEl.textContent = "the run";
+        ledeEl.textContent = "five stages, one instrument.";
+        dots.forEach(function (d) { d.classList.add("is-on"); });
+      }
+    })();
+
+    /* ── 3 · number reveals — receipt + dial ──────────────────── */
+    (function () {
+      var counts = [].slice.call(document.querySelectorAll("[data-count]"));
+      var dial = document.querySelector(".dial");
+      var dialNum = document.getElementById("dial-num");
+      function runCounts() {
+        counts.forEach(function (el) {
+          var target = parseInt(el.dataset.count, 10);
+          var c0 = performance.now(), D = 1400;
+          (function tick(now) {
+            var p = Math.min(1, (now - c0) / D);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * eased).toLocaleString("en-US");
+            if (p < 1) requestAnimationFrame(tick);
+          })(c0);
+        });
+      }
+      function runDial() {
+        if (!dial || !dialNum) return;
+        var d0 = performance.now(), D = 1400;
+        (function t(now) {
+          var p = Math.min(1, (now - d0) / D);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var v = Math.round(92 * eased);
+          dial.style.setProperty("--v", v);
+          dialNum.textContent = v;
+          if (p < 1) requestAnimationFrame(t);
+        })(d0);
+      }
+      var io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) {
+          if (en.isIntersecting) {
+            if (reduced) {
+              counts.forEach(function (el) { el.textContent = parseInt(el.dataset.count, 10).toLocaleString("en-US"); });
+              if (dial) { dial.style.setProperty("--v", 92); dialNum.textContent = "92"; }
+            } else { runCounts(); runDial(); }
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      if (document.querySelector(".receipt")) io.observe(document.querySelector(".receipt"));
+      if (dial) io.observe(dial.closest(".card"));
+    })();
+
+    /* ── 4 · reveal + meter ───────────────────────────────────── */
     (function () {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -532,24 +632,20 @@
         });
       }, { threshold: 0.12 });
       document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-    })();
 
-    // meter strip · gaussian envelope, printed once — a measurement, not a loop
-    (function () {
       var bars = document.querySelector(".meter__bars");
       if (!bars) return;
       var n = 64;
       for (var i = 0; i < n; i++) {
-        var t = i / (n - 1);                    // 0..1
-        var env = Math.exp(-Math.pow((t - 0.38) / 0.26, 2));  // gaussian
-        var h = 5 + env * 21;                   // 5..26px
-        var o = 0.18 + env * 0.62;
+        var t = i / (n - 1);
+        var env = Math.exp(-Math.pow((t - 0.38) / 0.26, 2));
         var s = document.createElement("span");
-        s.style.height = h.toFixed(1) + "px";
-        s.style.setProperty("--o", o.toFixed(2));
+        s.style.height = (5 + env * 21).toFixed(1) + "px";
+        s.style.setProperty("--o", (0.18 + env * 0.62).toFixed(2));
         bars.appendChild(s);
       }
     })();
+  })();
   </script>
 </body>
 </html>
