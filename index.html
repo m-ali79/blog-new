@@ -9,12 +9,12 @@
   <meta property="og:description" content="watch a publish-ready blog post get researched, written, scored, and filed to wordpress — live." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
-  <meta name="theme-color" content="#0b0a12" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0c14'/%3E%3Crect x='7.25' y='3' width='1.5' height='10' rx='.75' fill='%23e8b04b'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#0b0916" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0c14'/%3E%3Crect x='7.25' y='3' width='1.5' height='10' rx='.75' fill='%23e8a33c'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="styles.css" />
@@ -22,7 +22,7 @@
 <body>
   <a class="skip-link" href="#main">skip to content</a>
 
-  <!-- ─── nav · n5 floating pill · led · brass cta ─── -->
+  <!-- ─── nav · floating pill · led · cta ─── -->
   <header class="nav">
     <a class="nav__brand" href="#" aria-label="nib — home">
       <span class="nav__mark" aria-hidden="true"></span>
@@ -39,83 +39,99 @@
 
   <main id="main">
 
-    <!-- ─── hero · the live stage ─── -->
+    <!-- ─── hero · masthead + the typing document ─── -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__inner">
-        <p class="eyebrow reveal" style="--i:0">
-          <span class="eyebrow__dot" aria-hidden="true"></span>
-          00 · watch it run
-        </p>
-        <h1 class="hero__title reveal" id="hero-title" style="--i:1">
-          three days of work. eight seconds to <em>watch</em>.
-        </h1>
-        <p class="hero__lede reveal" style="--i:2">
-          nib connects to your site, studies what already ranks for your
-          keyword, writes the 2,000+ word draft in your voice, scores it
-          against seo practice, and files it in wordpress as a draft.
-          you press publish.
-        </p>
-
-        <!-- the moment · live run panel -->
-        <div class="run reveal" style="--i:3" aria-label="live demo — a blog post being written in real time">
-          <div class="run__counter">
-            <p class="run__num" id="run-num">0</p>
-            <p class="run__unit">words in the draft</p>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            00 · watch it run
+          </p>
+          <h1 class="hero__title" id="hero-title">
+            three days of work.<br />
+            eight seconds to <em>watch</em>.
+          </h1>
+          <p class="hero__lede">
+            nib connects to your site, studies what already ranks for your
+            keyword, writes the 2,000+ word draft in your voice, scores it
+            against seo practice, and files it in wordpress as a draft.
+            you press publish.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--accent btn--lg" href="#pricing">start free trial</a>
+            <a class="btn btn--ghost btn--lg" href="#stages">see how it runs</a>
           </div>
-          <div class="run__chamber" aria-hidden="true">
-            <span class="chamber__electrode" style="--y: 18%"></span>
-            <span class="chamber__electrode" style="--y: 38%"></span>
-            <span class="chamber__electrode" style="--y: 58%"></span>
-            <span class="chamber__electrode" style="--y: 78%"></span>
-            <span class="chamber__filament"></span>
-            <span class="chamber__glow"></span>
-          </div>
-          <div class="run__side">
-            <p class="run__feed" id="run-feed">standing by</p>
-            <p class="run__hint">a real run, at demo speed — the machine files it as a draft either way</p>
-            <span class="status" id="run-chip" hidden><i aria-hidden="true"></i>draft ready</span>
-          </div>
-          <div class="run__bar" aria-hidden="true"><span id="run-bar-fill"></span></div>
+          <p class="hero__meta">
+            <span>14 days free<i aria-hidden="true"></i></span>
+            <span>no card required<i aria-hidden="true"></i></span>
+            <span>cancel anytime</span>
+          </p>
         </div>
 
-        <div class="hero__cta reveal" style="--i:4">
-          <a class="btn btn--accent btn--lg" href="#pricing">start free trial</a>
-          <a class="btn btn--ghost btn--lg" href="#stages">see how it runs</a>
+        <!-- the document · the machine types it out live -->
+        <div class="stage" aria-label="live demo — a blog post being written in real time">
+          <div class="paper" id="paper">
+            <div class="paper__bar">
+              <span class="paper__meta">draft · section 2 of 6</span>
+              <span class="status" id="run-chip"><i aria-hidden="true"></i><span id="run-state">researching</span></span>
+            </div>
+            <p class="paper__title" id="paper-title"></p>
+            <div class="paper__rule" aria-hidden="true"></div>
+            <p class="paper__line" id="line-0"></p>
+            <p class="paper__line" id="line-1"></p>
+            <p class="paper__line" id="line-2"></p>
+            <p class="paper__line" id="line-3"></p>
+            <div class="paper__stamp" id="paper-stamp" hidden>
+              <span class="paper__stamp-line">draft ready</span>
+              <span class="paper__stamp-sub">filed to wordpress · awaiting you</span>
+            </div>
+          </div>
+
+          <div class="readout" aria-hidden="true">
+            <p class="readout__num" id="run-num">0</p>
+            <p class="readout__unit">words in the draft</p>
+          </div>
+
+          <div class="rail" aria-hidden="true">
+            <span class="rail__e" style="--y: 18%"></span>
+            <span class="rail__e" style="--y: 38%"></span>
+            <span class="rail__e" style="--y: 58%"></span>
+            <span class="rail__e" style="--y: 78%"></span>
+            <span class="rail__f"></span>
+            <span class="rail__g"></span>
+          </div>
         </div>
-        <p class="hero__meta reveal" style="--i:5">
-          <span>14 days free<i aria-hidden="true"></i></span>
-          <span>no card required<i aria-hidden="true"></i></span>
-          <span>cancel anytime</span>
-        </p>
       </div>
     </section>
 
-    <!-- ─── meter strip · printed readout ─── -->
-    <aside class="meter" aria-label="pipeline readout">
-      <p class="meter__label">pipeline · 5 stages</p>
-      <div class="meter__bars" aria-hidden="true"></div>
-      <p class="meter__label meter__label--right">output · wp draft</p>
-    </aside>
+    <!-- ─── marquee · the kinetic strip ─── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>publish daily</span><i>·</i><span>win the serp</span><i>·</i>
+        <span>organic compounds</span><i>·</i><span>you press publish</span><i>·</i>
+        <span>publish daily</span><i>·</i><span>win the serp</span><i>·</i>
+        <span>organic compounds</span><i>·</i><span>you press publish</span><i>·</i>
+      </div>
+    </div>
 
-    <!-- ─── stages · sticky scroll-sequence · the fly-through ─── -->
+    <!-- ─── fly · sticky scroll sequence ─── -->
     <section class="fly" id="stages" aria-label="how nib works — five stages">
-      <div class="fly__rail" aria-hidden="true">
+      <div class="fly__rail">
         <div class="fly__pin">
           <p class="fly__num" id="fly-num">1.0</p>
           <p class="fly__name" id="fly-name">connect</p>
-          <ul class="fly__dots" id="fly-dots">
-            <li class="is-on" aria-hidden="true"></li>
-            <li aria-hidden="true"></li>
-            <li aria-hidden="true"></li>
-            <li aria-hidden="true"></li>
-            <li aria-hidden="true"></li>
+          <ul class="fly__dots" id="fly-dots" aria-hidden="true">
+            <li class="is-on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
           </ul>
           <p class="fly__lede" id="fly-lede">plug in your site once.</p>
         </div>
       </div>
 
       <div class="fly__track">
-
         <article class="pane" data-num="1.0" data-name="connect" data-lede="plug in your site once.">
           <div class="pane__head">
             <p class="pane__kicker">1.0 · connect</p>
@@ -264,19 +280,19 @@
             </div>
           </div>
         </article>
-
       </div>
     </section>
 
-    <!-- ─── the receipt · the finished artifact ─── -->
-    <section class="receipt" aria-labelledby="receipt-title">
-      <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 01 · the output</p>
-      <h2 class="receipt__title reveal" id="receipt-title">what lands in your wordpress.</h2>
+    <!-- ─── receipt · the LIGHT document moment ─── -->
+    <section class="receipt" id="output" aria-labelledby="receipt-title">
+      <p class="eyebrow receipt__eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> 01 · the output</p>
+      <h2 class="receipt__title" id="receipt-title">what lands in your wordpress.</h2>
+      <p class="receipt__lede">one keyword. one run. one finished draft, waiting on your review.</p>
 
-      <figure class="receipt__paper reveal">
+      <div class="receipt__paper">
         <div class="receipt__head">
           <span class="meta">posts · drafts · today</span>
-          <span class="status"><i aria-hidden="true"></i>awaiting your review</span>
+          <span class="status receipt__status"><i aria-hidden="true"></i>awaiting your review</span>
         </div>
         <p class="receipt__headline">the off-season playbook for trade businesses</p>
         <div class="receipt__grid">
@@ -302,27 +318,28 @@
           <p><span class="k">meta description</span> how three trades businesses restructured pricing… (154 chars)</p>
           <p><span class="k">status</span> draft — you press publish</p>
         </div>
-      </figure>
+      </div>
     </section>
 
-    <!-- ─── the punch · mid-page pain line ─── -->
-    <section class="punch" aria-label="the cost of not publishing">
-      <p class="punch__line">
-        your competitor publishes daily.<br />
-        you published <em>last month</em>.
+    <!-- ─── the scream · full-bleed coral band ─── -->
+    <section class="scream" aria-label="the cost of not publishing">
+      <p class="scream__line" id="scream-line">
+        <span class="w">your</span> <span class="w">competitor</span> <span class="w">publishes</span> <span class="w">daily.</span><br />
+        <span class="w">you</span> <span class="w">published</span> <span class="w">last</span> <span class="w">month.</span>
       </p>
-      <p class="punch__sub">organic traffic compounds. every silent week is a week they climb and you don’t.</p>
+      <p class="scream__sub">organic traffic compounds. every silent week is a week they climb and you don’t.</p>
+      <a class="btn btn--bone btn--lg" href="#pricing">fix that — start free trial</a>
     </section>
 
-    <!-- ─── pricing · three plans ─── -->
+    <!-- ─── pricing ─── -->
     <section class="pricing" id="pricing" aria-labelledby="pricing-title">
       <header class="pricing__head">
-        <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 02 · pricing</p>
-        <h2 class="pricing__title reveal" id="pricing-title">pay per published decision.</h2>
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> 02 · pricing</p>
+        <h2 class="pricing__title" id="pricing-title">pay per published decision.</h2>
       </header>
 
       <div class="plans">
-        <article class="plan reveal">
+        <article class="plan">
           <p class="plan__name">solo</p>
           <p class="plan__price"><span class="plan__num">$29</span><span class="mo">/mo</span></p>
           <p class="plan__unit">4 posts · 1 site</p>
@@ -334,7 +351,7 @@
           <a class="btn btn--ghost btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan plan--feature reveal">
+        <article class="plan plan--feature">
           <span class="plan__badge">most teams</span>
           <p class="plan__name">studio</p>
           <p class="plan__price"><span class="plan__num">$79</span><span class="mo">/mo</span></p>
@@ -348,7 +365,7 @@
           <a class="btn btn--accent btn--block" href="#">start free trial</a>
         </article>
 
-        <article class="plan reveal">
+        <article class="plan">
           <p class="plan__name">agency</p>
           <p class="plan__price"><span class="plan__num">$249</span><span class="mo">/mo</span></p>
           <p class="plan__unit">60 posts · unlimited sites</p>
@@ -365,8 +382,8 @@
     <!-- ─── faq ─── -->
     <section class="faqsec" id="faq" aria-labelledby="faq-title">
       <header class="faqsec__head">
-        <p class="eyebrow reveal"><span class="eyebrow__dot" aria-hidden="true"></span> 03 · questions</p>
-        <h2 class="faqsec__title reveal" id="faq-title">the things people actually ask.</h2>
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> 03 · questions</p>
+        <h2 class="faqsec__title" id="faq-title">the things people actually ask.</h2>
       </header>
 
       <div class="faq">
@@ -409,9 +426,9 @@
       </div>
     </section>
 
-    <!-- ─── closing · the deep beat ─── -->
+    <!-- ─── closing · the deep void ─── -->
     <div class="closing-wrap">
-      <section class="closing reveal" aria-labelledby="closing-title">
+      <section class="closing" aria-labelledby="closing-title">
         <h2 class="closing__title" id="closing-title">
           your next 50 posts are a keyword list away.
         </h2>
@@ -431,7 +448,7 @@
     </div>
   </main>
 
-  <!-- ─── footer · statement ─── -->
+  <!-- ─── footer ─── -->
   <footer class="foot">
     <div class="foot__inner">
       <p class="foot__statement">the draft arrives finished. the byline stays yours.</p>
@@ -458,90 +475,71 @@
   (function () {
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* ── 1 · the hero run — counter, feed, chamber, bar ───────── */
+    /* ── 1 · the typing document — the machine writes, live ─── */
     (function () {
+      var titleEl = document.getElementById("paper-title");
+      var lines = ["line-0", "line-1", "line-2", "line-3"].map(function (id) { return document.getElementById(id); });
       var num = document.getElementById("run-num");
-      var feed = document.getElementById("run-feed");
-      var chip = document.getElementById("run-chip");
-      var bar = document.getElementById("run-bar-fill");
-      var electrodes = [].slice.call(document.querySelectorAll(".run__chamber .chamber__electrode"));
-      if (!num) return;
-      var steps = [
-        { t: "connecting · wordpress", d: 1200, e: 0 },
-        { t: "reading top 10 results", d: 1200, e: 1 },
-        { t: "writing the draft", d: 2600, e: 2, count: true },
-        { t: "seo check", d: 1300, e: 3 },
-        { t: "filed as wp draft", d: 1100, e: 3 }
+      var state = document.getElementById("run-state");
+      var stamp = document.getElementById("paper-stamp");
+      var railE = [].slice.call(document.querySelectorAll(".rail__e"));
+      if (!titleEl) return;
+
+      var TITLE = "the quiet season is a pricing problem, not a demand problem";
+      var BODY = [
+        "every november, call volume drops and shop owners panic.",
+        "they cut ad spend, cut staff, and go quiet —",
+        "and that silence is exactly what their competitors bank on.",
+        "the off-season playbook restructures pricing, not panic."
       ];
-      var total = steps.reduce(function (a, s) { return a + s.d; }, 0);
-      var timer = null, raf = null, running = false;
+      var TOTAL_CHARS = TITLE.length + BODY.join("").length;
+      var written = 0;
+      function words() { return Math.min(2340, Math.round(written / TOTAL_CHARS * 2340)); }
+      function lightRail(i) { railE.forEach(function (e, j) { e.classList.toggle("is-active", j === i); }); }
 
-      function clearLeds() {
-        electrodes.forEach(function (el) { el.classList.remove("is-active"); });
-      }
-      function setBar(p) { if (bar) bar.style.transform = "scaleX(" + p + ")"; }
-      function kill() {
-        if (timer) clearTimeout(timer); timer = null;
-        if (raf) cancelAnimationFrame(raf); raf = null;
-        running = false;
-      }
-
-      function play() {
-        kill(); running = true;
-        if (chip) chip.hidden = true;
-        var t0 = performance.now();
-        (function frame(now) {
-          var el = now - t0;
-          setBar(Math.min(1, el / total));
-          if (el >= total) { finish(); return; }
-          raf = requestAnimationFrame(frame);
-        })(t0);
-
+      function typeInto(el, text, speed, done) {
         var i = 0;
-        function step() {
-          if (i >= steps.length) return;
-          var st = steps[i];
-          feed.textContent = st.t;
-          clearLeds();
-          if (electrodes[st.e]) electrodes[st.e].classList.add("is-active");
-          if (st.count) {
-            var c0 = performance.now(), D = st.d - 200;
-            (function cnt(now) {
-              var p = Math.min(1, (now - c0) / D);
-              num.textContent = Math.round(2340 * p).toLocaleString("en-US");
-              if (p < 1 && running) raf = requestAnimationFrame(cnt);
-            })(c0);
-          }
-          timer = setTimeout(function () { i++; step(); }, st.d);
-        }
-        step();
+        (function tick() {
+          if (i <= text.length) { el.textContent = text.slice(0, i); i++; written++; num.textContent = words().toLocaleString("en-US"); }
+          if (i <= text.length) { setTimeout(tick, speed); } else { done && done(); }
+        })();
       }
-
       function finish() {
-        running = false;
-        feed.textContent = "draft ready · in your wordpress";
-        clearLeds();
-        if (chip) chip.hidden = false;
-        setBar(1);
+        state.textContent = "draft ready";
+        stamp.hidden = false;
+        railE.forEach(function (e) { e.classList.remove("is-active"); });
+        document.querySelectorAll(".paper__line").forEach(function (l) { if (!l.textContent) l.textContent = " "; });
       }
 
       if (reduced) {
+        titleEl.textContent = TITLE;
+        BODY.forEach(function (t, i) { lines[i].textContent = t; });
         num.textContent = "2,340";
-        feed.textContent = "draft ready · in your wordpress";
-        if (chip) chip.hidden = false;
-        setBar(1);
+        state.textContent = "draft ready";
+        stamp.hidden = false;
         return;
       }
       var io = new IntersectionObserver(function (ents) {
         ents.forEach(function (en) {
-          if (en.isIntersecting && !running) { play(); }
-          else if (!en.isIntersecting && running) { kill(); num.textContent = "0"; feed.textContent = "standing by"; setBar(0); clearLeds(); if (chip) chip.hidden = true; }
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          state.textContent = "reading top 10";
+          lightRail(1);
+          setTimeout(function () {
+            state.textContent = "writing";
+            lightRail(2);
+            typeInto(titleEl, TITLE, 24, function () {
+              BODY.forEach(function (t, i) {
+                setTimeout(function () { typeInto(lines[i], t, 14, function () { if (i === BODY.length - 1) { state.textContent = "seo check · 92"; lightRail(3); setTimeout(function () { state.textContent = "filing to wordpress"; lightRail(4); setTimeout(finish, 800); }, 1000); } }); }, 700 * i);
+              });
+            });
+          }, 1300);
         });
-      }, { threshold: 0.35 });
-      io.observe(document.querySelector(".run"));
+      }, { threshold: 0.3 });
+      io.observe(document.querySelector(".stage"));
     })();
 
-    /* ── 2 · the fly-through — pinned rail syncs to panes ─────── */
+    /* ── 2 · fly rail sync ──────────────────────────────────── */
     (function () {
       var pin = document.querySelector(".fly__pin");
       var panes = [].slice.call(document.querySelectorAll(".pane"));
@@ -550,20 +548,15 @@
       var ledeEl = document.getElementById("fly-lede");
       var dots = [].slice.call(document.querySelectorAll("#fly-dots li"));
       if (!pin || !panes.length) return;
-
       function sync() {
-        var mid = window.innerHeight * 0.5;
-        var active = 0;
-        panes.forEach(function (p, i) {
-          var b = p.getBoundingClientRect();
-          if (b.top <= mid && b.bottom >= mid) active = i;
-        });
+        var mid = window.innerHeight * 0.5, active = 0;
+        panes.forEach(function (p, i) { var b = p.getBoundingClientRect(); if (b.top <= mid && b.bottom >= mid) active = i; });
         var p = panes[active];
         numEl.textContent = p.dataset.num;
         nameEl.textContent = p.dataset.name;
         ledeEl.textContent = p.dataset.lede;
         dots.forEach(function (d, i) { d.classList.toggle("is-on", i === active); });
-        pin.classList.toggle("is-swap", true);
+        pin.classList.add("is-swap");
         setTimeout(function () { pin.classList.remove("is-swap"); }, 240);
       }
       if (!reduced) {
@@ -580,70 +573,51 @@
       }
     })();
 
-    /* ── 3 · number reveals — receipt + dial ──────────────────── */
+    /* ── 3 · receipt counters + dial ────────────────────────── */
     (function () {
       var counts = [].slice.call(document.querySelectorAll("[data-count]"));
       var dial = document.querySelector(".dial");
       var dialNum = document.getElementById("dial-num");
-      function runCounts() {
+      var fired = false;
+      function runAll() {
         counts.forEach(function (el) {
-          var target = parseInt(el.dataset.count, 10);
-          var c0 = performance.now(), D = 1400;
+          var target = parseInt(el.dataset.count, 10), c0 = performance.now(), D = 1400;
           (function tick(now) {
-            var p = Math.min(1, (now - c0) / D);
-            var eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = Math.round(target * eased).toLocaleString("en-US");
+            var p = Math.min(1, (now - c0) / D), e = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * e).toLocaleString("en-US");
             if (p < 1) requestAnimationFrame(tick);
           })(c0);
         });
-      }
-      function runDial() {
         if (!dial || !dialNum) return;
         var d0 = performance.now(), D = 1400;
         (function t(now) {
-          var p = Math.min(1, (now - d0) / D);
-          var eased = 1 - Math.pow(1 - p, 3);
-          var v = Math.round(92 * eased);
+          var p = Math.min(1, (now - d0) / D), e = 1 - Math.pow(1 - p, 3), v = Math.round(92 * e);
           dial.style.setProperty("--v", v);
           dialNum.textContent = v;
           if (p < 1) requestAnimationFrame(t);
         })(d0);
       }
+      function instant() {
+        counts.forEach(function (el) { el.textContent = parseInt(el.dataset.count, 10).toLocaleString("en-US"); });
+        if (dial) { dial.style.setProperty("--v", 92); dialNum.textContent = "92"; }
+      }
       var io = new IntersectionObserver(function (ents) {
         ents.forEach(function (en) {
-          if (en.isIntersecting) {
-            if (reduced) {
-              counts.forEach(function (el) { el.textContent = parseInt(el.dataset.count, 10).toLocaleString("en-US"); });
-              if (dial) { dial.style.setProperty("--v", 92); dialNum.textContent = "92"; }
-            } else { runCounts(); runDial(); }
-            io.unobserve(en.target);
-          }
+          if (en.isIntersecting && !fired) { fired = true; if (reduced) instant(); else runAll(); io.disconnect(); }
         });
       }, { threshold: 0.4 });
       if (document.querySelector(".receipt")) io.observe(document.querySelector(".receipt"));
       if (dial) io.observe(dial.closest(".card"));
     })();
 
-    /* ── 4 · reveal + meter ───────────────────────────────────── */
+    /* ── 4 · the scream words + reveals + marquee dup ───────── */
     (function () {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
         });
-      }, { threshold: 0.12 });
-      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
-
-      var bars = document.querySelector(".meter__bars");
-      if (!bars) return;
-      var n = 64;
-      for (var i = 0; i < n; i++) {
-        var t = i / (n - 1);
-        var env = Math.exp(-Math.pow((t - 0.38) / 0.26, 2));
-        var s = document.createElement("span");
-        s.style.height = (5 + env * 21).toFixed(1) + "px";
-        s.style.setProperty("--o", (0.18 + env * 0.62).toFixed(2));
-        bars.appendChild(s);
-      }
+      }, { threshold: 0.25 });
+      document.querySelectorAll(".scream, .receipt, .closing").forEach(function (el) { io.observe(el); });
     })();
   })();
   </script>
