@@ -102,6 +102,7 @@
           </div>
         </div>
       </div>
+      <div class="sparkles" id="sparkles" aria-hidden="true"></div>
     </section>
 
     <!-- ─── marquee · the kinetic strip ─── -->
@@ -389,23 +390,23 @@
       <div class="faq">
         <details class="faq__item" open>
           <summary>will google punish ai-written content?</summary>
-          <p>google’s stated position punishes content made for rankings instead of people — not the tool that typed it. nib’s drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p>
+          <div class="faq__body"><div><p>google’s stated position punishes content made for rankings instead of people — not the tool that typed it. nib’s drafts go through the same scorecard a human editor would apply, and the approve step keeps a person accountable for every post.</p></div></div>
         </details>
         <details class="faq__item">
           <summary>how does it match my brand voice?</summary>
-          <p>stage 1.0 builds a voice profile from your existing posts — sentence length, structure, vocabulary. every draft is written against that profile, so the output reads like your blog, not a press release.</p>
+          <div class="faq__body"><div><p>stage 1.0 builds a voice profile from your existing posts — sentence length, structure, vocabulary. every draft is written against that profile, so the output reads like your blog, not a press release.</p></div></div>
         </details>
         <details class="faq__item">
           <summary>can it publish without me?</summary>
-          <p>no. nib files everything as a wordpress draft and stops. the publish button is yours — that’s the whole point of the design.</p>
+          <div class="faq__body"><div><p>no. nib files everything as a wordpress draft and stops. the publish button is yours — that’s the whole point of the design.</p></div></div>
         </details>
         <details class="faq__item">
           <summary>what if the draft isn’t good?</summary>
-          <p>each section can be regenerated with a nudge — “shorter”, “more examples”, “less jargon”. the 0–100 score tells you exactly what’s weak before you spend time reading.</p>
+          <div class="faq__body"><div><p>each section can be regenerated with a nudge — “shorter”, “more examples”, “less jargon”. the 0–100 score tells you exactly what’s weak before you spend time reading.</p></div></div>
         </details>
         <details class="faq__item">
           <summary>does it work outside wordpress?</summary>
-          <p>wordpress first — it’s where most business blogs live. webflow and shopify are on the roadmap. if you’re on another stack, the drafts export as clean markdown.</p>
+          <div class="faq__body"><div><p>wordpress first — it’s where most business blogs live. webflow and shopify are on the roadmap. if you’re on another stack, the drafts export as clean markdown.</p></div></div>
         </details>
       </div>
     </section>
@@ -548,16 +549,21 @@
       var ledeEl = document.getElementById("fly-lede");
       var dots = [].slice.call(document.querySelectorAll("#fly-dots li"));
       if (!pin || !panes.length) return;
+      var lastActive = -1;
       function sync() {
         var mid = window.innerHeight * 0.5, active = 0;
         panes.forEach(function (p, i) { var b = p.getBoundingClientRect(); if (b.top <= mid && b.bottom >= mid) active = i; });
+        if (active === lastActive) return;            // no blink on same section
+        lastActive = active;
         var p = panes[active];
         numEl.textContent = p.dataset.num;
         nameEl.textContent = p.dataset.name;
         ledeEl.textContent = p.dataset.lede;
         dots.forEach(function (d, i) { d.classList.toggle("is-on", i === active); });
+        pin.classList.remove("is-swap");
+        void pin.offsetWidth;
         pin.classList.add("is-swap");
-        setTimeout(function () { pin.classList.remove("is-swap"); }, 240);
+        setTimeout(function () { pin.classList.remove("is-swap"); }, 260);
       }
       if (!reduced) {
         var ticking = false;
@@ -618,6 +624,70 @@
         });
       }, { threshold: 0.25 });
       document.querySelectorAll(".scream, .receipt, .closing").forEach(function (el) { io.observe(el); });
+    })();
+
+    /* ── 5 · smooth scroll · heavy inertia, wheel+keys, no deps ─ */
+    (function () {
+      if (reduced) return;
+      var target = 0, current = window.scrollY, raf = null;
+      var htmlEl = document.documentElement;
+      htmlEl.style.scrollBehavior = "auto";
+      function maxS() { return htmlEl.scrollHeight - window.innerHeight; }
+      function drive() {
+        current += (target - current) * 0.09;      // low lerp = heavy feel
+        if (Math.abs(target - current) < 0.5) { current = target; }
+        window.scrollTo(0, current);
+        if (Math.abs(target - current) > 0.5) { raf = requestAnimationFrame(drive); }
+        else { raf = null; }
+      }
+      function go(y) { target = Math.max(0, Math.min(maxS(), y)); if (!raf) raf = requestAnimationFrame(drive); }
+      window.addEventListener("wheel", function (e) {
+        if (e.ctrlKey) return;                     // pinch zoom untouched
+        e.preventDefault();
+        go(current + e.deltaY);
+      }, { passive: false });
+      window.addEventListener("keydown", function (e) {
+        var step = window.innerHeight * 0.8;
+        var map = { ArrowDown: 1, PageDown: 1, Space: 1, ArrowUp: -1, PageUp: -1 };
+        if (!(e.key in map)) return;
+        e.preventDefault();
+        go(current + map[e.key] * step);
+      });
+      // anchors ride the same inertia
+      [].slice.call(document.querySelectorAll('a[href^="#"]')).forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var id = a.getAttribute("href");
+          if (id.length < 2) return;
+          var el = document.querySelector(id);
+          if (!el) return;
+          e.preventDefault();
+          go(el.getBoundingClientRect().top + current - 96);
+        });
+      });
+      // keep lerp state in sync with any native jumps
+      window.addEventListener("scroll", function () {
+        if (!raf) current = window.scrollY;
+      }, { passive: true });
+    })();
+
+    /* ── 6 · sparkles · hero ambience ────────────────────────── */
+    (function () {
+      var wrap = document.getElementById("sparkles");
+      if (!wrap || reduced) return;
+      var n = 34;
+      for (var i = 0; i < n; i++) {
+        var s = document.createElement("span");
+        s.className = "sparkle";
+        var size = (2.5 + Math.random() * 3.5).toFixed(1);
+        s.style.width = size + "px";
+        s.style.height = size + "px";
+        s.style.left = (Math.random() * 100).toFixed(2) + "%";
+        s.style.top = (20 + Math.random() * 80).toFixed(2) + "%";
+        s.style.setProperty("--o", (0.45 + Math.random() * 0.5).toFixed(2));
+        s.style.animationDuration = (7 + Math.random() * 10).toFixed(1) + "s";
+        s.style.animationDelay = (-Math.random() * 14).toFixed(1) + "s";
+        wrap.appendChild(s);
+      }
     })();
   })();
   </script>

@@ -30,6 +30,7 @@
   --color-glow:       oklch(80% 0.18 62 / 0.5);
   --color-glow-2:     oklch(80% 0.18 62 / 0.14);
   --color-emit:       oklch(75% 0.19 62 / 0.08);
+  --rule-blueprint:   oklch(97% 0.008 270 / 0.07);  /* hero grid, visible */
 
   /* — the band · full-bleed coral field — */
   --color-band:       oklch(52% 0.23 30);

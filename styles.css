@@ -131,8 +131,8 @@ a { color: inherit; }
   background:
     radial-gradient(55% 45% at 78% 18%, var(--color-emit) 0%, transparent 65%),
     radial-gradient(40% 35% at 12% 88%, oklch(66% 0.22 28 / 0.06) 0%, transparent 60%),
-    linear-gradient(var(--rule-blueprint, oklch(97% 0.008 270 / 0.03)) 1px, transparent 1px) 0 0 / 48px 48px,
-    linear-gradient(90deg, var(--rule-blueprint, oklch(97% 0.008 270 / 0.03)) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(var(--rule-blueprint) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--rule-blueprint) 1px, transparent 1px) 0 0 / 32px 32px,
     var(--color-paper);
   overflow: clip;
 }
@@ -626,7 +626,14 @@ a { color: inherit; }
 }
 .faq__item[open] summary::after { transform: rotate(45deg); }
 .faq__item summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: 4px; }
-.faq__item p { margin: var(--space-md) 0 0; max-width: 62ch; color: var(--color-ink-2); }
+.faq__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-long) var(--ease-in-out);
+}
+.faq__item[open] .faq__body { grid-template-rows: 1fr; }
+.faq__body > div { overflow: hidden; min-height: 0; }
+.faq__body p { margin: var(--space-md) 0 0; max-width: 62ch; color: var(--color-ink-2); }
 
 .trustband {
   max-width: var(--page-max); margin: 0 auto;
