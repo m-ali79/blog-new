@@ -1,8 +1,8 @@
-/* nib · hero bg shader — DeepSeek-Harness spec, faithful rebuild
- * deep slate-navy base · silver-white domain-warped glow blobs ·
- * density-modulated halftone dots · thin sine wave lines ·
- * eased cursor lens (acid green = brand accent) · scroll drift
- * ONE ShaderMaterial · file://-safe · reduced-motion → static
+/* nib · hero flow-field shader — DeepSeek-Harness register, rebuilt
+ * domain-warped fbm → swirling clouds · contour lines (dotted flow look)
+ * cursor bends the field (magnet) · scroll parallax shifts it
+ * ONE ShaderMaterial · file://-safe (no fetch, no ESM)
+ * reduced-motion → static frame
  * debug: window.__H = { uniforms, move(x,y), dispose() }
  */
 (function () {
@@ -15,7 +15,7 @@
   var renderer = null, scene = null, camera = null, material = null;
   var raf = null, paused = false, running = false;
   var W = 0, H = 0;
-  var mouseTarget = new THREE.Vector2(0.75, 0.72);
+  var mouseTarget = new THREE.Vector2(0.2, 0.4);   /* eased toward */
 
   function fail(msg) { window.__HERR = (window.__HERR || "") + msg + "; "; }
 
@@ -33,11 +33,10 @@
     var FRAG = [
       "precision highp float;",
       "uniform vec2 uRes;",
-      "uniform vec2 uMouse;",
+      "uniform vec2 uMouse;",            /* NDC -1..1 */
       "uniform float uTime;",
-      "uniform float uScroll;",
-      "uniform float uDrift;",
-      "uniform float uCursorEnergy;",
+      "uniform float uScroll;",          /* scrollY px — parallax */
+      "uniform float uDrift;",           /* 0 = frozen (reduced motion) */
 
       "float hash(vec2 p) {",
       "  p = fract(p * vec2(123.34, 456.21));",
@@ -59,62 +58,49 @@
       "void main() {",
       "  vec2 uv = gl_FragCoord.xy / uRes;",
       "  float aspect = uRes.x / uRes.y;",
-      "  vec2 apos = uv * vec2(aspect, 1.0);",           /* aspect-corrected */
+      "  vec2 p = uv * vec2(aspect, 1.0) * 3.0;",
 
-      /* ── 1 · base: deep slate-navy, darker at bottom, center lift ── */
-      "  vec3 baseDark = vec3(0.028, 0.045, 0.088);",
-      "  vec3 baseMid  = vec3(0.070, 0.118, 0.196);",
-      "  float vGrad = 1.0 - uv.y;",
-      "  vec2 radial = apos - vec2(aspect * 0.5, 0.55);",
-      "  float rGrad = smoothstep(0.95, 0.22, length(radial));",
-      "  vec3 base = mix(baseDark, baseMid, clamp(vGrad * 0.45 + rGrad * 0.55, 0.0, 1.0));",
+      /* time + scroll drift — the field moves with the page */
+      "  p += vec2(uTime * 0.030, uTime * 0.020 - uScroll * 0.0006) * uDrift;",
 
-      /* ── 2 · glow blobs: domain-warped smoke, silver-white ── */
-      "  vec2 drift = vec2(uTime * 0.014, uTime * 0.009 - uScroll * 0.00035) * uDrift;",
-      "  vec2 q = apos * 2.1 + drift;",
-      "  vec2 w1 = vec2(fbm(q), fbm(q + vec2(5.2, 1.3)));",
-      "  vec2 r1 = vec2(fbm(q + w1 * 1.2 + vec2(1.7, 9.2)), fbm(q + w1 * 1.2 + vec2(8.3, 2.8)));",
-      "  float blob = fbm(q + r1 * 0.8);",
-
-      /* two gaussian windows: upper-right large, mid-left small */
-      "  vec2 c1 = vec2(0.72, 0.20) * vec2(aspect, 1.0);",
-      "  vec2 c2 = vec2(0.45, 0.60) * vec2(aspect, 1.0);",
-      "  float g1 = exp(-pow(length(apos - c1) / 0.55, 2.0));",
-      "  float g2 = exp(-pow(length(apos - c2) / 0.42, 2.0));",
-      "  float glowMask = g1 * 0.80 + g2 * 0.90;",
-      "  float glow = smoothstep(0.22, 0.68, blob) * glowMask;",
-
-      "  vec3 silver = vec3(0.90, 0.93, 0.97);",
-      "  vec3 col = base + silver * (glow * 0.46 + glowMask * 0.10);",
-
-      /* ── 3 · halftone dots: ~14px pitch, density = glow field ── */
-      "  vec2 pix = gl_FragCoord.xy;",
-      "  vec2 cell = fract(pix / 14.0) - 0.5;",
-      "  float ddot = smoothstep(0.34, 0.26, length(cell));",
-      "  float density = smoothstep(0.10, 0.55, glow + glowMask * 0.18);",
-      "  vec3 steel = vec3(0.55, 0.65, 0.78);",
-      "  col = mix(col, steel, ddot * 0.16 * density);",
-
-      /* ── 4 · sine wave lines: 2 thin strokes, low alpha ── */
-      "  for (int i = 0; i < 2; i++) {",
-      "    float fi = float(i);",
-      "    float yBase = 0.42 + fi * 0.16;",
-      "    float lineY = yBase + sin(uv.x * 7.0 * aspect + fi * 2.1 + uTime * 0.10 * uDrift) * 0.055;",
-      "    float dline = abs(uv.y - lineY);",
-      "    float stroke = smoothstep(0.0060, 0.0018, dline);",
-      "    col = mix(col, vec3(0.55, 0.68, 0.84), stroke * 0.22);",
-      "  }",
-
-      /* ── 5 · cursor lens: acid green, eased by JS, small radius ── */
+      /* cursor: a magnet that bends the flow field */
       "  vec2 m = uMouse * 0.5 + 0.5;",
       "  m.x *= aspect;",
-      "  float md = length(apos - m);",
-      "  float cursorGlow = exp(-md * md * 16.0) * uCursorEnergy;",
-      "  col = mix(col, vec3(0.47, 0.88, 0.55), cursorGlow * 0.30);",
+      "  m *= 3.0;",
+      "  vec2 dir = normalize(p - m + 0.0001);",
+      "  float md = length(p - m);",
+      "  float influence = exp(-md * md * 4.5) * 0.55;",
+      "  p -= dir * influence * 0.5;",
 
-      /* ── 6 · vignette: corners recede to near-black ── */
-      "  float v = smoothstep(1.35, 0.45, length(apos - vec2(aspect * 0.5, 0.5)));",
-      "  col *= 0.72 + 0.28 * v;",
+      /* domain warp → swirling clouds */
+      "  vec2 q = vec2(fbm(p), fbm(p + vec2(5.2, 1.3)));",
+      "  vec2 r = vec2(fbm(p + q * 1.5 + vec2(1.7, 9.2)), fbm(p + q * 1.5 + vec2(8.3, 2.8)));",
+      "  float f = fbm(p + r * 2.0);",
+
+      /* palette: charcoal void → acid-green clouds → bright crests */
+      "  vec3 deep   = vec3(0.075, 0.085, 0.090);",
+      "  vec3 green  = vec3(0.280, 0.560, 0.380);",
+      "  vec3 bright = vec3(0.470, 0.880, 0.550);",
+      "  vec3 col = mix(deep, green, smoothstep(0.35, 0.72, f));",
+      "  col = mix(col, bright, smoothstep(0.74, 0.96, f) * 0.85);",
+
+      /* contour lines — the dotted flow-field look */
+      "  float contour = fract(f * 14.0);",
+      "  float line = smoothstep(0.90, 1.0, contour);",
+      "  col = mix(col, vec3(0.620, 0.920, 0.700), line * 0.30);",
+
+      /* cursor halo */
+      "  float glow = exp(-md * md * 9.0);",
+      "  col = mix(col, bright, glow * 0.40);",
+
+      /* subtle blueprint grid overlay */
+      "  vec2 g = fract(uv * vec2(aspect * 26.0, 26.0));",
+      "  float grid = smoothstep(0.965, 1.0, max(g.x, g.y));",
+      "  col = mix(col, vec3(0.110, 0.125, 0.130), grid * 0.28);",
+
+      /* vignette */
+      "  float v = smoothstep(1.40, 0.35, length(uv * vec2(aspect, 1.0) - vec2(aspect * 0.5, 0.5)));",
+      "  col *= 0.70 + 0.30 * v;",
 
       "  gl_FragColor = vec4(col, 1.0);",
       "}"
@@ -125,11 +111,10 @@
       fragmentShader: FRAG,
       uniforms: {
         uRes: { value: new THREE.Vector2(1, 1) },
-        uMouse: { value: mouseTarget.clone() },
+        uMouse: { value: new THREE.Vector2(0.2, 0.4) },
         uTime: { value: 0 },
         uScroll: { value: 0 },
-        uDrift: { value: reduced ? 0 : 1 },
-        uCursorEnergy: { value: 0 }
+        uDrift: { value: reduced ? 0 : 1 }
       },
       depthWrite: false,
       depthTest: false
@@ -155,12 +140,12 @@
         ((e.clientX - r.left) / r.width) * 2 - 1,
         -(((e.clientY - r.top) / r.height) * 2 - 1)
       );
-      cursorEnergy = 1;                    /* movement activates the lens */
     }
     if (window.matchMedia("(pointer: fine)").matches) {
       section.addEventListener("pointermove", onMove);
     }
 
+    /* scroll parallax — cheap uniform update, no layout reads */
     function onScroll() {
       material.uniforms.uScroll.value = window.scrollY || window.pageYOffset || 0;
     }
@@ -168,17 +153,15 @@
     onScroll();
 
     var last = performance.now();
-    var cursorEnergy = 0;
     function frame(now) {
       if (paused || !running) return;
       var dt = Math.min((now - last) / 1000, 0.05);
       last = now;
       material.uniforms.uTime.value += dt;
+      /* ease the cursor — smooth follow, no snap */
       var u = material.uniforms.uMouse.value;
       u.x += (mouseTarget.x - u.x) * (1 - Math.pow(0.001, dt));
       u.y += (mouseTarget.y - u.y) * (1 - Math.pow(0.001, dt));
-      cursorEnergy *= Math.pow(0.02, dt);   /* fades to 0 at rest */
-      material.uniforms.uCursorEnergy.value = cursorEnergy;
       renderer.render(scene, camera);
       raf = requestAnimationFrame(frame);
     }
@@ -190,7 +173,7 @@
     });
 
     if (reduced) {
-      material.uniforms.uTime.value = 3.1;
+      material.uniforms.uTime.value = 2.4;   /* static poster frame */
       renderer.render(scene, camera);
     } else {
       start();
@@ -198,7 +181,7 @@
 
     window.__H = {
       uniforms: material.uniforms,
-      move: function (nx, ny) { mouseTarget.set(nx, ny); cursorEnergy = 1; },
+      move: function (nx, ny) { mouseTarget.set(nx, ny); },
       pause: function () { paused = true; stop(); },
       play: function () { paused = false; if (!reduced) start(); },
       dispose: function () {
