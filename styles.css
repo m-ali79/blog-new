@@ -1,6 +1,7 @@
-/* nib v4 · electric night — full register
- * void machine → bone document → coral scream → deep void
- */
+/* Hallmark · genre: atmospheric · macrostructure: Narrative Workflow (sticky-rail variant)
+ * theme: custom (v4.6 retune — cool charcoal + acid-green) · design-system: design.md
+ * hero shader: WebGL dot-matrix ribbon (hero-flow.js) · see design.md for the locked system */
+
 html, body { overflow-x: clip; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

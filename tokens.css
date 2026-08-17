@@ -31,7 +31,6 @@
   --color-glow:       oklch(80% 0.16 145 / 0.5);
   --color-glow-2:     oklch(80% 0.16 145 / 0.14);
   --color-emit:       oklch(78% 0.17 145 / 0.08);
-  --rule-blueprint:   oklch(97% 0.008 250 / 0.07);  /* hero grid, visible */
 
   /* — the band · full-bleed deep green field — */
   --color-band:       oklch(46% 0.13 145);

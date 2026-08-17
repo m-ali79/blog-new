@@ -33,14 +33,13 @@ to it. Amend intentionally — the file is the rule.
   --color-band:       oklch(46% 0.13 145);     /* full-bleed deep-green field */
   --color-deep:       oklch(8%  0.010 250);    /* closing void */
   --color-glass:      oklch(15% 0.012 250 / 0.75);
-  --rule-blueprint:   oklch(97% 0.008 250 / 0.07); /* hero grid, visible 32px */
 
   --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
   --font-body:    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-label:   "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* 4-pt spacing scale, named: --space-3xs … --space-4xl. See tokens.css.   */
-  /* Type scale: hero masthead 8.5rem max, counter 11rem max, punch 8rem.     */
+  /* Type scale: hero masthead 5rem max (viewport fit), counter 11rem max, punch 5.25rem. */
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -74,8 +73,9 @@ to it. Amend intentionally — the file is the rule.
 - **Fly rail** — number/verb swaps with a 260ms fade-slide ONLY on section
   change (never per scroll frame).
 - **FAQ** — open/close animates `grid-template-rows` 0fr→1fr.
-- **Sparkles** — 34 floating green particles in the hero, transform+opacity,
-  reduced-motion hides them.
+- **Hero shader** — WebGL dot-matrix ribbon on a defined sine path, eased
+  cursor lens (green, movement-activated), gentle scroll drift. Reduced-motion:
+  static frame. one ShaderMaterial, three r159 vendored locally, file://-safe.
 - Section reveals are one-shot (hero grid, receipt, closing). Reduced-motion:
   everything static, fully visible.
 
@@ -83,7 +83,9 @@ to it. Amend intentionally — the file is the rule.
 - **The typing document** — a light bone paper in the hero that types the
   article live, with a giant green word counter and a coral-free rubber stamp
   ("draft ready · filed to wordpress") that lands in the corner.
-- **Visible blueprint grid** — 32px cells at 7% opacity under the hero.
+- **Hero shader** — a single focused dot-matrix ribbon following a defined
+  sine path across the middle; clean dark negative space everywhere else.
+  Green palette, eased cursor lens, scroll drift. No grid, no full-canvas noise.
 - **Narrative Workflow stages** — sticky left rail (`1.0 → 5.0` big serif
   numeral + name + dots) syncs to tall panes; text + inner-lit hairline cards.
 - **Light document receipt** — full-bleed bone section with counting stats
