@@ -93,10 +93,6 @@
       "  float glow = exp(-md * md * 9.0);",
       "  col = mix(col, bright, glow * 0.40);",
 
-      /* subtle blueprint grid overlay */
-      "  vec2 g = fract(uv * vec2(aspect * 26.0, 26.0));",
-      "  float grid = smoothstep(0.965, 1.0, max(g.x, g.y));",
-      "  col = mix(col, vec3(0.110, 0.125, 0.130), grid * 0.28);",
 
       /* vignette */
       "  float v = smoothstep(1.40, 0.35, length(uv * vec2(aspect, 1.0) - vec2(aspect * 0.5, 0.5)));",
